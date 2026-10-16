@@ -1,0 +1,23 @@
+{
+  "schema": "apidelta-report-v1",
+  "perspective": "existing clients upgrading to the new description",
+  "status": "no_detected_breakage",
+  "counts": {
+    "breaking": 0,
+    "review": 0,
+    "info": 0
+  },
+  "operations_compared": 5,
+  "findings": [],
+  "limits": "Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.",
+  "extension": "authcheck-v1 (includes dependcheck and all earlier line 4 analyzers)",
+  "security_alternative_comparisons": 11,
+  "source": "https://api.imd.fun/openapi.json",
+  "user_agent": "Pepeolithic-AuthCheck/27.0",
+  "fetched_at": "2026-10-16T20:21:05.931085+00:00",
+  "http_status": 200,
+  "bytes": 23132,
+  "old_sha256": "be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a",
+  "new_sha256": "be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a",
+  "read_only": true
+}

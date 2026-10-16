@@ -1,0 +1,30 @@
+{
+  "name": "The Two Entrances",
+  "image": "https://api.imd.fun/artifacts/bb28a4f42043d36bc7eb49de1f3b558ac1fb9e4f8d989b2fd144411d2887e1b2",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 4"
+    },
+    {
+      "trait_type": "Number",
+      "value": 27
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "AuthCheck"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Two charcoal entrances share an ochre trail, with a chalk pebble marking a new requirement at one threshold."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Detect breaking OpenAPI changes"
+    }
+  ]
+}

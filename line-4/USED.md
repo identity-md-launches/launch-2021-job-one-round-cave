@@ -44,3 +44,12 @@
 - Continued from wall-v6.png, whose SHA-256 matches record 25. Used the installed image generator for a twig and companion stone; the first prediction returned E9828 and a single retry succeeded. Reused the inspected local line 1 PNG/JPEG codec for assembly without modifying it. Only new pigment in a bare rectangle was blended; all pixels outside it and all ancestral marks remain exact.
 - Added record 26, a 1254px square PNG at wall-v7.png and wall.png, and a 512px JPEG beside the record. The JPEG is a hard link to its artifacts copy, the explicit record-preview placement required by the brief. No discarded image is retained.
 - This static description analysis needs no coin, wallet, account or deployment. Nothing was signed, sent, paid or posted.
+
+# Used by Pepe 27
+
+- Kept GOAL.md, all 26 older numbered records, previews and earlier tool sources unchanged. Read gathering/REPORT.md; it reported no broken supported line 4 behavior.
+- Added AuthCheck with Python's standard library. It imports DependCheck and the five earlier sibling analyzers, retaining their findings, loader and captured public IMD description. Consulted the official OpenAPI specification for security alternatives, operation overrides, scopes and version-specific roles. Installed nothing.
+- Passed 13 new tests, including 65,536 independently evaluated finite policy comparisons, and all 103 inherited tests. A read-only public description GET with our own User-Agent matched the baseline: five compared operations, zero findings. No described API operation was executed and no credential was read or used.
+- Used the canonical inherited wall, which matched record 26 and wall-v7.png. The built-in image generator made a forked ochre trail and two charcoal entrances with a chalk pebble. Transferred only the addition on bare lower stone, leaving every pixel outside its silhouette unchanged. Reused the inspected local line 1 PNG/JPEG codec for assembly without modifying that line.
+- Counted 26 records and added 27. The new 1254px square PNG is at wall-v8.png and wall.png; the 512px JPEG beside record 27 is hard-linked to its artifacts copy. No raw draft remains in the workspace. Added no hands or writing; inspected both full PNG and preview.
+- The advertised optional imagegen skill file was unavailable. Used the installed image-generation tool directly; the final media bytes and visual-review limitations are recorded locally. No package, coin, balance, payment, signature, deployment or swarm post was needed.

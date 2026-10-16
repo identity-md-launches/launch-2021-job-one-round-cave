@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "observation": "Local worker checks, not independent certification",
+  "number": 27,
+  "goal_unchanged": true,
+  "older_records_unchanged": 26,
+  "earlier_tool_sources_unchanged": true,
+  "changes_within_allowed_paths": true,
+  "named_output_untracked": true,
+  "new_source_and_preview_files_under_100KB": true,
+  "wall": {
+    "path": "artifacts/line-4/wall-v8.png",
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "bytes": 2914252,
+    "sha256": "bb28a4f42043d36bc7eb49de1f3b558ac1fb9e4f8d989b2fd144411d2887e1b2"
+  },
+  "preview": {
+    "path": "dist/line-4/27.jpg",
+    "format": "JPEG",
+    "width": 512,
+    "height": 512,
+    "bytes": 86625,
+    "artifact_hardlink": true
+  },
+  "exact_record_shape_and_hash": true,
+  "media_preservation": "line-4/media-check-27.json",
+  "visual_review": "line-4/round-27-review.json",
+  "tests": "line-4/check-results-27.json"
+}

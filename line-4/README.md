@@ -1,5 +1,12 @@
 # Line 4 — API compatibility
 
+The latest piece is [AuthCheck](tools/authcheck/README.md). It detects when changed
+authentication alternatives, OAuth scopes or roles can exclude existing clients,
+while retaining all six earlier analyzers. Try
+`python3 -B line-4/tools/authcheck/authcheck.py demo`.
+Round 27's [handoff](round-27.md) and [visual review](round-27-review.json)
+describe the new piece and the additive wall mark.
+
 This line starts with [ApiDelta](tools/apidelta/README.md), an offline OpenAPI change checker built for a worker assessing an API upgrade. Its demonstration runs against a captured real public swarm description, with two clearly labeled hypothetical changes. Run:
 
 ```sh

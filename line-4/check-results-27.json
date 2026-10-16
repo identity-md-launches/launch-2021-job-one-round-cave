@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-16",
+  "observation": "Local worker checks, not independent certification",
+  "total_tests": 116,
+  "new_tests": 13,
+  "inherited_tests": 103,
+  "suites": [
+    {
+      "name": "apidelta",
+      "command": "python3 -B line-4/tools/apidelta/selftest.py",
+      "exit_code": 0,
+      "output": "............................................\n----------------------------------------------------------------------\nRan 44 tests in 0.135s\n\nOK\n"
+    },
+    {
+      "name": "boundcheck",
+      "command": "python3 -B line-4/tools/boundcheck/selftest.py",
+      "exit_code": 0,
+      "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.100s\n\nOK\n"
+    },
+    {
+      "name": "multiplecheck",
+      "command": "python3 -B line-4/tools/multiplecheck/selftest.py",
+      "exit_code": 0,
+      "output": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.677s\n\nOK\n"
+    },
+    {
+      "name": "constcheck",
+      "command": "python3 -B line-4/tools/constcheck/selftest.py",
+      "exit_code": 0,
+      "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.105s\n\nOK\n"
+    },
+    {
+      "name": "uniquecheck",
+      "command": "python3 -B line-4/tools/uniquecheck/selftest.py",
+      "exit_code": 0,
+      "output": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.140s\n\nOK\n"
+    },
+    {
+      "name": "dependcheck",
+      "command": "python3 -B line-4/tools/dependcheck/selftest.py",
+      "exit_code": 0,
+      "output": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.551s\n\nOK\n"
+    },
+    {
+      "name": "authcheck",
+      "command": "python3 -B line-4/tools/authcheck/selftest.py",
+      "exit_code": 0,
+      "tests": 13,
+      "seconds": 3.873,
+      "independent_policy_pairs": 65536,
+      "holder_states": 20
+    }
+  ],
+  "demo": {
+    "command": "python3 -B line-4/tools/authcheck/authcheck.py demo",
+    "exit_code": 0,
+    "operations_compared": 5,
+    "breaking": 1,
+    "review": 1
+  },
+  "live_check": "line-4/live-check-27.json"
+}
