@@ -1,0 +1,85 @@
+{
+  "step": 27,
+  "tool": "RewardAudit",
+  "wall": {
+    "path": "artifacts/line-3/wall-v8.png",
+    "format": "PNG",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "sha256": "479a29d225f1860f2d235ec8f2d9b3ab4abbd39ad7764dc496ed623a55d15c8c",
+    "bytes": 2415011
+  },
+  "canonical_wall": "artifacts/line-3/wall.png",
+  "preview": {
+    "path": "dist/line-3/27.jpg",
+    "format": "JPEG",
+    "dimensions": [
+      512,
+      512
+    ],
+    "bytes": 53774
+  },
+  "preservation": {
+    "source": "artifacts/line-3/wall-v7.png",
+    "source_sha256": "48e05788146b4cdd85d8e2b2a5f37cd66a3be26b646b0987ec8164e7a9208eca",
+    "generated_edit_sha256": "f12bf5e4d51d28930e97c45e3abd21a98b199fec45045324a855324f9501f9f7",
+    "output_sha256": "479a29d225f1860f2d235ec8f2d9b3ab4abbd39ad7764dc496ed623a55d15c8c",
+    "patch_xywh": [
+      715,
+      248,
+      150,
+      92
+    ],
+    "changed_pixels": 2817,
+    "changed_pixels_outside_patch": 0,
+    "protected_rgb_sha256": "8cf12a77a7fcddbbc1ebf7401bc0fa305d12eafd64a4462287dabf898fe6d22a",
+    "method": "Image-tool charcoal, ochre and chalk selected within a bare-rock patch; pigment blended over original rock. All other RGB pixels retained.",
+    "png_dimensions": [
+      1254,
+      1254
+    ],
+    "png_bytes": 2415011,
+    "jpeg_dimensions": [
+      512,
+      512
+    ],
+    "jpeg_bytes": 53774
+  },
+  "visual_review": {
+    "status": "Worker inspected completed full-size PNG and 512-pixel JPEG",
+    "unmet_requirements": [],
+    "observations": [
+      "Both inherited heavy-lidded wide-mouth Pepe figures remain unchanged.",
+      "The sole visible ancestral hand has five digits: four fingers and one thumb. No new hands or stencils.",
+      "Added two charcoal bowls, one red ochre pebble in each, an ochre arch and one chalk pebble above the gap.",
+      "No letters, numbers, captions, signatures, logos, watermarks, border or frame observed.",
+      "Original square dimensions, framing, illumination and all ancestral pigment retained; zero changed pixels outside a bare-rock patch."
+    ],
+    "limit": "Worker visual review rather than independent human approval; fine pigment detail is reduced in the thumbnail."
+  },
+  "checks": {
+    "new_tests_passed": 13,
+    "exhaustive_subset_seeded_cases": 250,
+    "dependency_regression_tests_passed": 23,
+    "demo_exit": 0,
+    "demo_budget_units": "1000000000000000000",
+    "image_structure_valid": true,
+    "goal_unchanged": true,
+    "older_records_unchanged": true,
+    "delivery_passed": true,
+    "isolated_offline_demo_exit": 0,
+    "ancestor_wall_hash_matches_record": true,
+    "record_image_hash_matches": true
+  },
+  "limitations": [
+    "Shares, validators and unsigned hashes do not establish entitlement, identity, balance, authorization or payment.",
+    "Historical ZTO metadata reused; no live chain observation.",
+    "Audit arithmetic follows a separate integer boundary-check path but shares input validation and display helpers.",
+    "Formatted audit output is bounded to 256 KiB and may refuse long rosters rather than truncate.",
+    "Inherited rock has photographic appearance; preserving the supplied wall retains that appearance."
+  ],
+  "image_method": "Built-in imagegen edited inherited wall; selected only new pigment with geometric and color masks and composited over original rock. One generated draft; overly broad first compositing pass rejected and repaired.",
+  "image_prompt": "Preserve the full square cave and all inherited paintings. Add only a small upper-middle-right earth-pigment motif: two equal shallow charcoal bowls with one red ochre pebble each, a short red ochre arch, and one chalk pebble above the gap. Worn handmade cave pigment, no writing, no new hands or frogs. Existing five-digit hand unchanged."
+}

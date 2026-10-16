@@ -1,0 +1,26 @@
+{
+  "source": "artifacts/line-3/wall-v7.png",
+  "source_sha256": "48e05788146b4cdd85d8e2b2a5f37cd66a3be26b646b0987ec8164e7a9208eca",
+  "generated_edit_sha256": "f12bf5e4d51d28930e97c45e3abd21a98b199fec45045324a855324f9501f9f7",
+  "output_sha256": "479a29d225f1860f2d235ec8f2d9b3ab4abbd39ad7764dc496ed623a55d15c8c",
+  "patch_xywh": [
+    715,
+    248,
+    150,
+    92
+  ],
+  "changed_pixels": 2817,
+  "changed_pixels_outside_patch": 0,
+  "protected_rgb_sha256": "8cf12a77a7fcddbbc1ebf7401bc0fa305d12eafd64a4462287dabf898fe6d22a",
+  "method": "Image-tool charcoal, ochre and chalk selected within a bare-rock patch; pigment blended over original rock. All other RGB pixels retained.",
+  "png_dimensions": [
+    1254,
+    1254
+  ],
+  "png_bytes": 2415011,
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "jpeg_bytes": 53774
+}

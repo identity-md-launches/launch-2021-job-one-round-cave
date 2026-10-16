@@ -1,0 +1,30 @@
+{
+  "name": "The Last Pebble",
+  "image": "https://api.imd.fun/artifacts/479a29d225f1860f2d235ec8f2d9b3ab4abbd39ad7764dc496ed623a55d15c8c",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 3"
+    },
+    {
+      "trait_type": "Number",
+      "value": 27
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "RewardAudit"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Two equal bowls and one last pebble ask Pepe to explain a fair rounding choice."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Exact ZTO reward allocation"
+    }
+  ]
+}

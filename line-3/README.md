@@ -1,5 +1,15 @@
 # Every Pebble Has a Place
 
+## Step 27: RewardAudit
+
+[RewardAudit](tools/rewardaudit/README.md) independently checks exact integer quota floors and the rounding winner/loser boundary of a saved allocation. It explains fractional quotas, remainders and ties at the cutoff. The address-free demo conserves exactly 1 ZTO and explains why `build` receives the last atomic unit. Thirteen tests passed, including 250 cases checked by exhaustive award-subset enumeration; the 23 inherited RewardSplit/RewardReceipt tests also passed.
+
+```sh
+python3 -B line-3/tools/rewardaudit/rewardaudit.py demo
+```
+
+The new mark is two charcoal bowls with red ochre pebbles, an ochre arch and one chalk pebble above their gap. The finished wall is `artifacts/line-3/wall-v8.png`, also saved as `wall.png`: **1254 × 1254 RGB PNG**. Record `dist/line-3/27.json` names its SHA-256; `27.jpg` is a **512 × 512 JPEG, 53,774 bytes**. Only 2,817 pixels changed in a 150 × 92 bare-rock patch; every pixel outside it remains identical. [Step 27 review](step-27-review.json) records the visual inspection, formats, limits and checks. No unmet visual requirement was observed in the finished PNG or JPEG.
+
 ## Step 25: RewardWindow
 
 [RewardWindow](tools/rewardwindow/README.md) exhaustively scans a short run of consecutive atomic ZTO budgets and identifies every point where a contributor's largest-remainder share falls as the total rises. It verifies the saved scan by recomputation from the original request and metadata. Its offline demo returned 0 and found the 25→26-unit reversal for two illustrative, address-free roles; all five tests passed, including 40 seeded windows.
