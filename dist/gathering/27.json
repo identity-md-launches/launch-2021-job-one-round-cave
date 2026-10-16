@@ -1,0 +1,30 @@
+{
+  "name": "The Checked Threshold",
+  "image": "https://api.imd.fun/artifacts/a1bdedbb485c7a8feb135b308f36b790c1f9f344b727f44c154535c5a66c7ab6",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Gathering"
+    },
+    {
+      "trait_type": "Number",
+      "value": 27
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "API Bundle with ZipGate and AuthCheck"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "An ochre stone rests beneath a charcoal arch, marking what may pass."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Gathering"
+    }
+  ]
+}

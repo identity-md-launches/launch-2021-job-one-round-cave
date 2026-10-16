@@ -1,0 +1,25 @@
+{
+  "inherited_wall_sha256": "b19664c882ed18ce34c90dd27759b0eade3b590977ba5439c8cd6ece3354571d",
+  "generated_edit_sha256": "73f4853967be464b2dce8455bfced65aefc54a7118c9795fba62f2654a5f9b1d",
+  "output_sha256": "a1bdedbb485c7a8feb135b308f36b790c1f9f344b727f44c154535c5a66c7ab6",
+  "mark_rectangle": [
+    735,
+    230,
+    180,
+    145
+  ],
+  "changed_pixels_inside": 7864,
+  "pixels_changed_outside": 0,
+  "protected_rgb_sha256": "196eaba1fe2db97d52dd492a70c420d460c207e5d2ff69d628c5ec3e23bd1804",
+  "method": "Image-tool arch and threshold stones selected within a bare-rock patch and composited over original rock. All other RGB pixels retained.",
+  "png_dimensions": [
+    1254,
+    1254
+  ],
+  "png_format": "RGB PNG",
+  "jpeg_dimensions": [
+    512,
+    512
+  ],
+  "jpeg_bytes": 87317
+}

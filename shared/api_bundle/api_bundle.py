@@ -13,13 +13,14 @@ import time
 import zipfile
 import zlib
 
-from vendor import apidelta, dependcheck, safezip
+from vendor import apidelta, authcheck, safezip, zipgate
 
 MAX_ARCHIVE = 32 * 1024 * 1024
 
 
-def read_bundle(path, member='openapi.json', expected_sha256=None, checkpoint=lambda: None, nodes=32000):
+def read_bundle(path, member='openapi.json', expected_sha256=None, checkpoint=lambda: None, nodes=32000, directory_bytes=2097152):
     checkpoint()
+    zipgate.positive('directory_bytes', directory_bytes)
     if type(nodes) is not int or nodes <= 0:
         raise ValueError('nodes must be a positive integer')
     if expected_sha256 is not None and (
@@ -49,6 +50,8 @@ def read_bundle(path, member='openapi.json', expected_sha256=None, checkpoint=la
         raise ValueError('archive SHA-256 differs from approved digest')
     limits = argparse.Namespace(entries=1000, file_bytes=16*1024*1024,
                                 total_bytes=64*1024*1024, ratio=200)
+    preflight = zipgate.directory_gate(raw, entries=limits.entries,
+                                       directory_bytes=directory_bytes, checkpoint=checkpoint)
     selected = None
     inventory = []
     actual_total = 0
@@ -92,12 +95,13 @@ def read_bundle(path, member='openapi.json', expected_sha256=None, checkpoint=la
     apidelta.validate(obj)
     return obj, {'archive_sha256': archive_sha256,
                  'approved_sha256_checked': expected_sha256 is not None,
+                 'preflight': preflight,
                  'member': member, 'member_sha256': hashlib.sha256(selected).hexdigest(),
                  'checked_files': inventory, 'all_payloads_crc_checked': True}
 
 
 def compare(old, new, member='openapi.json', old_sha256=None, new_sha256=None,
-            seconds=None, cancelled=None, nodes=32000):
+            seconds=None, cancelled=None, nodes=32000, directory_bytes=2097152):
     if seconds is not None:
         try:
             valid_seconds = (not isinstance(seconds, bool)
@@ -117,10 +121,10 @@ def compare(old, new, member='openapi.json', old_sha256=None, new_sha256=None,
         if deadline is not None and time.monotonic() >= deadline:
             raise ValueError('operation time budget exceeded')
 
-    a, before = read_bundle(old, member, old_sha256, checkpoint, nodes)
-    b, after = read_bundle(new, member, new_sha256, checkpoint, nodes)
+    a, before = read_bundle(old, member, old_sha256, checkpoint, nodes, directory_bytes)
+    b, after = read_bundle(new, member, new_sha256, checkpoint, nodes, directory_bytes)
     checkpoint()
-    report = dependcheck.compare(a, b)
+    report = authcheck.compare(a, b)
     checkpoint()
     report['bundle_inputs'] = {'old': before, 'new': after}
     return report
@@ -134,11 +138,13 @@ def main():
     parser.add_argument('--old-sha256', help='require these exact approved old archive bytes')
     parser.add_argument('--new-sha256', help='require these exact approved new archive bytes')
     parser.add_argument('--nodes', type=int, default=32000, help='maximum distinct member paths and implicit parents per archive')
+    parser.add_argument('--directory-bytes', type=int, default=2097152, help='maximum ZIP central directory bytes before parsing, per archive')
     parser.add_argument('--seconds', type=float, help='cooperative time budget for the whole comparison')
     args = parser.parse_args()
     try:
         report = compare(args.old, args.new, args.member, args.old_sha256,
-                         args.new_sha256, args.seconds, nodes=args.nodes)
+                         args.new_sha256, args.seconds, nodes=args.nodes,
+                         directory_bytes=args.directory_bytes)
         print(json.dumps(report, indent=2, allow_nan=False))
         return {'breaking': 1, 'review_required': 3, 'no_detected_breakage': 0}[report['status']]
     except (ValueError, OSError, RuntimeError, EOFError, zipfile.BadZipFile,

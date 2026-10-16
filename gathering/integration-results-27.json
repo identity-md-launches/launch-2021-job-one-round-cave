@@ -1,0 +1,559 @@
+[
+  {
+    "label": "frontier ready work from progress",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/frontier/frontier.py",
+      "--tasks",
+      "line-1/tools/frontier/tasks.json",
+      "--progress",
+      "line-1/tools/frontier/progress.json",
+      "--workers",
+      "2",
+      "--elapsed",
+      "3",
+      "--budget",
+      "10"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"elapsed\": \"3\",\n  \"deadline\": \"10\",\n  \"completed\": [\n    \"read\"\n  ],\n  \"running\": [\n    {\n      \"task\": \"build\",\n      \"remaining\": \"4\"\n    }\n  ],\n  \"free_workers\": 1,\n  \"ready\": [\n    {\n      \"task\": \"fixtures\",\n      \"minutes\": \"3\",\n      \"downstream_minutes\": \"5\"\n    }\n  ],\n  \"blocked\": [\n    {\n      \"task\": \"check\",\n      \"waiting_for\": [\n        \"build\",\n        \"fixtures\"\n      ]\n    }\n  ],\n  \"remaining_work\": \"9\",\n  \"dependency_lower_bound\": \"6\",\n  \"capacity_lower_bound\": \"9/2\",\n  \"remaining_lower_bound\": \"6\",\n  \"available_minutes\": \"7\",\n  \"deadline_status\": \"not_ruled_out\",\n  \"scope\": \"Snapshot only. Lower bounds cannot prove feasibility. Ready ordering is a heuristic, not an optimal launch decision. No tasks executed.\",\n  \"assumptions\": \"Interchangeable workers; running work stays active; unfinished estimates replace original durations; no historical timing certified.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "frontier rules out short deadline",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/frontier/frontier.py",
+      "--tasks",
+      "line-1/tools/frontier/tasks.json",
+      "--progress",
+      "line-1/tools/frontier/progress.json",
+      "--workers",
+      "2",
+      "--elapsed",
+      "3",
+      "--budget",
+      "8"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"elapsed\": \"3\",\n  \"deadline\": \"8\",\n  \"completed\": [\n    \"read\"\n  ],\n  \"running\": [\n    {\n      \"task\": \"build\",\n      \"remaining\": \"4\"\n    }\n  ],\n  \"free_workers\": 1,\n  \"ready\": [\n    {\n      \"task\": \"fixtures\",\n      \"minutes\": \"3\",\n      \"downstream_minutes\": \"5\"\n    }\n  ],\n  \"blocked\": [\n    {\n      \"task\": \"check\",\n      \"waiting_for\": [\n        \"build\",\n        \"fixtures\"\n      ]\n    }\n  ],\n  \"remaining_work\": \"9\",\n  \"dependency_lower_bound\": \"6\",\n  \"capacity_lower_bound\": \"9/2\",\n  \"remaining_lower_bound\": \"6\",\n  \"available_minutes\": \"5\",\n  \"deadline_status\": \"impossible_at_estimates\",\n  \"scope\": \"Snapshot only. Lower bounds cannot prove feasibility. Ready ordering is a heuristic, not an optimal launch decision. No tasks executed.\",\n  \"assumptions\": \"Interchangeable workers; running work stays active; unfinished estimates replace original durations; no historical timing certified.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "gate public archive before parser",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-2/tools/zipgate/zipgate.py",
+      "inspect",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "--sha256",
+      "f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef",
+      "--directory-bytes",
+      "1024"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"mode\": \"inspect\",\n  \"entries\": [\n    {\n      \"path\": \"openapi.json\",\n      \"kind\": \"file\",\n      \"bytes\": 23132,\n      \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n    },\n    {\n      \"path\": \"inert-note.txt\",\n      \"kind\": \"file\",\n      \"bytes\": 28,\n      \"sha256\": \"06e417019de0851572fca7b37c732aa874f4c20c62de0c818c579bfb717dacba\"\n    }\n  ],\n  \"total_bytes\": 23160,\n  \"content_checked\": true,\n  \"archive_sha256\": \"f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef\",\n  \"preflight\": {\n    \"entries\": 2,\n    \"directory_bytes\": 118,\n    \"zip64\": false\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "gate refuses directory budget",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-2/tools/zipgate/zipgate.py",
+      "inspect",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "--directory-bytes",
+      "1"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\"ok\": false, \"error\": \"directory byte limit exceeded before ZIP parsing\"}\n",
+    "stderr": ""
+  },
+  {
+    "label": "shared refuses directory budget",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "shared/api_bundle/api_bundle.py",
+      "test/scratch/gathering27-47zy0sqp/old.zip",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "--directory-bytes",
+      "1"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\"ok\": false, \"error\": \"directory byte limit exceeded before ZIP parsing\"}\n",
+    "stderr": ""
+  },
+  {
+    "label": "fixed worker order slack at deadline",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/slackmap/slackmap.py",
+      "--tasks",
+      "line-1/tools/optplan/idle-example.json",
+      "--plan",
+      "test/scratch/gathering27-47zy0sqp/plan.json",
+      "--workers",
+      "2",
+      "--budget",
+      "16"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"mode\": \"fixed_worker_order\",\n  \"minimum_finish_in_model\": \"16\",\n  \"target_finish\": \"16\",\n  \"deadline_supplied\": true,\n  \"deadline_feasible_in_model\": true,\n  \"deadline_slack\": \"0\",\n  \"one_longest_path\": [\n    \"prepare\",\n    \"build-a\",\n    \"integrate\"\n  ],\n  \"worker_order_edges\": [\n    {\n      \"before\": \"prepare\",\n      \"after\": \"build-a\",\n      \"worker\": 1\n    },\n    {\n      \"before\": \"build-a\",\n      \"after\": \"background\",\n      \"worker\": 1\n    },\n    {\n      \"before\": \"build-b\",\n      \"after\": \"integrate\",\n      \"worker\": 2\n    }\n  ],\n  \"tasks\": [\n    {\n      \"task\": \"background\",\n      \"minutes\": \"6\",\n      \"earliest_start\": \"8\",\n      \"earliest_finish\": \"14\",\n      \"latest_start\": \"10\",\n      \"latest_finish\": \"16\",\n      \"total_float\": \"2\",\n      \"free_float\": \"2\",\n      \"critical_to_minimum\": false\n    },\n    {\n      \"task\": \"build-a\",\n      \"minutes\": \"7\",\n      \"earliest_start\": \"1\",\n      \"earliest_finish\": \"8\",\n      \"latest_start\": \"1\",\n      \"latest_finish\": \"8\",\n      \"total_float\": \"0\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"build-b\",\n      \"minutes\": \"7\",\n      \"earliest_start\": \"1\",\n      \"earliest_finish\": \"8\",\n      \"latest_start\": \"1\",\n      \"latest_finish\": \"8\",\n      \"total_float\": \"0\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"integrate\",\n      \"minutes\": \"8\",\n      \"earliest_start\": \"8\",\n      \"earliest_finish\": \"16\",\n      \"latest_start\": \"8\",\n      \"latest_finish\": \"16\",\n      \"total_float\": \"0\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"prepare\",\n      \"minutes\": \"1\",\n      \"earliest_start\": \"0\",\n      \"earliest_finish\": \"1\",\n      \"latest_start\": \"0\",\n      \"latest_finish\": \"1\",\n      \"total_float\": \"0\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    }\n  ],\n  \"scope\": \"Fixed assignment/order; input idle gaps may be removed. No order optimization.\",\n  \"warning\": \"Float is individual, not additive or permission to delay every task. Estimates are assumptions.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "fixed worker order rejects short budget",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/slackmap/slackmap.py",
+      "--tasks",
+      "line-1/tools/optplan/idle-example.json",
+      "--plan",
+      "test/scratch/gathering27-47zy0sqp/plan.json",
+      "--workers",
+      "2",
+      "--budget",
+      "15"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"mode\": \"fixed_worker_order\",\n  \"minimum_finish_in_model\": \"16\",\n  \"target_finish\": \"15\",\n  \"deadline_supplied\": true,\n  \"deadline_feasible_in_model\": false,\n  \"deadline_slack\": \"-1\",\n  \"one_longest_path\": [\n    \"prepare\",\n    \"build-a\",\n    \"integrate\"\n  ],\n  \"worker_order_edges\": [\n    {\n      \"before\": \"prepare\",\n      \"after\": \"build-a\",\n      \"worker\": 1\n    },\n    {\n      \"before\": \"build-a\",\n      \"after\": \"background\",\n      \"worker\": 1\n    },\n    {\n      \"before\": \"build-b\",\n      \"after\": \"integrate\",\n      \"worker\": 2\n    }\n  ],\n  \"tasks\": [\n    {\n      \"task\": \"background\",\n      \"minutes\": \"6\",\n      \"earliest_start\": \"8\",\n      \"earliest_finish\": \"14\",\n      \"latest_start\": \"9\",\n      \"latest_finish\": \"15\",\n      \"total_float\": \"1\",\n      \"free_float\": \"2\",\n      \"critical_to_minimum\": false\n    },\n    {\n      \"task\": \"build-a\",\n      \"minutes\": \"7\",\n      \"earliest_start\": \"1\",\n      \"earliest_finish\": \"8\",\n      \"latest_start\": \"0\",\n      \"latest_finish\": \"7\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"build-b\",\n      \"minutes\": \"7\",\n      \"earliest_start\": \"1\",\n      \"earliest_finish\": \"8\",\n      \"latest_start\": \"0\",\n      \"latest_finish\": \"7\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"integrate\",\n      \"minutes\": \"8\",\n      \"earliest_start\": \"8\",\n      \"earliest_finish\": \"16\",\n      \"latest_start\": \"7\",\n      \"latest_finish\": \"15\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"prepare\",\n      \"minutes\": \"1\",\n      \"earliest_start\": \"0\",\n      \"earliest_finish\": \"1\",\n      \"latest_start\": \"-1\",\n      \"latest_finish\": \"0\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    }\n  ],\n  \"scope\": \"Fixed assignment/order; input idle gaps may be removed. No order optimization.\",\n  \"warning\": \"Float is individual, not additive or permission to delay every task. Estimates are assumptions.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "compare repacked fresh public description trees",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-2/tools/zipdiff/zipdiff.py",
+      "test/scratch/gathering27-47zy0sqp/old.zip",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "--before-sha256",
+      "6d8cb209ed9ee7817901c589c5aa4fe8775161dd00881f4f74e9291f8e883414",
+      "--after-sha256",
+      "f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef",
+      "--seconds",
+      "10"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"mode\": \"compare\",\n  \"content_checked\": true,\n  \"before_sha256\": \"6d8cb209ed9ee7817901c589c5aa4fe8775161dd00881f4f74e9291f8e883414\",\n  \"after_sha256\": \"f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef\",\n  \"archive_bytes_equal\": false,\n  \"trees_equal\": true,\n  \"before_nodes\": 2,\n  \"after_nodes\": 2,\n  \"before_bytes\": 23160,\n  \"after_bytes\": 23160,\n  \"byte_delta\": 0,\n  \"unchanged_nodes\": 2,\n  \"counts\": {\n    \"added\": 0,\n    \"removed\": 0,\n    \"type_changed\": 0,\n    \"content_changed\": 0\n  },\n  \"changes\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "merge independent ZTO rounds",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardmerge/rewardmerge.py",
+      "merge",
+      "--manifest",
+      "test/scratch/gathering27-47zy0sqp/rounds.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--output",
+      "test/scratch/gathering27-47zy0sqp/merged.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "label": "verify cumulative ZTO units",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardmerge/rewardmerge.py",
+      "verify",
+      "--manifest",
+      "test/scratch/gathering27-47zy0sqp/rounds.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/merged.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardmerge-verification-v1\",\n  \"result\": \"verified cumulative allocation arithmetic\",\n  \"report_sha256\": \"87ae4aae0abdb6939ca02cea05314e38b1c050529a0578e4726cab097ed16314\",\n  \"budget_units\": \"3000000000000000000\",\n  \"review_required\": false,\n  \"scope\": \"sum of verified independent allocations; repeated reports counted once per round label; no entitlement, identity, balance or payment verified\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "flag repeated ZTO allocation without hiding totals",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardmerge/rewardmerge.py",
+      "merge",
+      "--manifest",
+      "test/scratch/gathering27-47zy0sqp/repeated.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json"
+    ],
+    "expected_exit": 1,
+    "exit": 1,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardmerge-v1\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"manifest_sha256\": \"99179d38fc86135a71aad146273c804b951a48ed5910f5c957dd3a58621eec4c\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"round_count\": 2,\n  \"budget_units\": \"2000000000000000000\",\n  \"budget_amount\": \"2.000000000000000000\",\n  \"unallocated_units\": \"0\",\n  \"all_recipients_supplied\": false,\n  \"allocations\": [\n    {\n      \"id\": \"build\",\n      \"units\": \"666666666666666668\",\n      \"amount\": \"0.666666666666666668\",\n      \"rounds\": [\n        \"again\",\n        \"first\"\n      ]\n    },\n    {\n      \"id\": \"research\",\n      \"units\": \"666666666666666666\",\n      \"amount\": \"0.666666666666666666\",\n      \"rounds\": [\n        \"again\",\n        \"first\"\n      ]\n    },\n    {\n      \"id\": \"review\",\n      \"units\": \"666666666666666666\",\n      \"amount\": \"0.666666666666666666\",\n      \"rounds\": [\n        \"again\",\n        \"first\"\n      ]\n    }\n  ],\n  \"round_receipts\": [\n    {\n      \"id\": \"again\",\n      \"receipt\": {\n        \"schema\": \"rewardreceipt-v1\",\n        \"result\": \"verified exact RewardSplit allocation\",\n        \"token\": {\n          \"chain_id\": 1,\n          \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n          \"symbol\": \"ZTO\",\n          \"decimals\": 18,\n          \"block_number\": 26205319,\n          \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n        },\n        \"budget_units\": \"1000000000000000000\",\n        \"contributors\": 3,\n        \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n        \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n        \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n        \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n      }\n    },\n    {\n      \"id\": \"first\",\n      \"receipt\": {\n        \"schema\": \"rewardreceipt-v1\",\n        \"result\": \"verified exact RewardSplit allocation\",\n        \"token\": {\n          \"chain_id\": 1,\n          \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n          \"symbol\": \"ZTO\",\n          \"decimals\": 18,\n          \"block_number\": 26205319,\n          \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n        },\n        \"budget_units\": \"1000000000000000000\",\n        \"contributors\": 3,\n        \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n        \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n        \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n        \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n      }\n    }\n  ],\n  \"repeated_reports\": [\n    {\n      \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n      \"rounds\": [\n        \"again\",\n        \"first\"\n      ]\n    }\n  ],\n  \"review_required\": true,\n  \"scope\": \"sum of verified independent allocations; repeated reports counted once per round label; no entitlement, identity, balance or payment verified\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "independently validate intentional waiting",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/plancheck/plancheck.py",
+      "--tasks",
+      "line-1/tools/optplan/idle-example.json",
+      "--plan",
+      "test/scratch/gathering27-47zy0sqp/plan.json",
+      "--workers",
+      "2",
+      "--budget",
+      "16"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"violations\": [],\n  \"tasks_expected\": 5,\n  \"schedule_entries\": 5,\n  \"workers_checked\": 2,\n  \"deadline_checked\": true,\n  \"arithmetic\": \"exact decimal values; no tolerance\",\n  \"scope\": \"full schedule feasibility at supplied estimates; no execution or optimality proof\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "reject external deadline despite optimality claim",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/plancheck/plancheck.py",
+      "--tasks",
+      "line-1/tools/optplan/idle-example.json",
+      "--plan",
+      "test/scratch/gathering27-47zy0sqp/plan.json",
+      "--workers",
+      "2",
+      "--budget",
+      "15"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\n  \"valid\": false,\n  \"violations\": [\n    \"deadline_exceeded\"\n  ],\n  \"tasks_expected\": 5,\n  \"schedule_entries\": 5,\n  \"workers_checked\": 2,\n  \"deadline_checked\": true,\n  \"arithmetic\": \"exact decimal values; no tolerance\",\n  \"scope\": \"full schedule feasibility at supplied estimates; no execution or optimality proof\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "scan consecutive ZTO budgets",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardwindow/rewardwindow.py",
+      "scan",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--steps",
+      "3",
+      "--output",
+      "test/scratch/gathering27-47zy0sqp/window.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "label": "verify complete ZTO window",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardwindow/rewardwindow.py",
+      "verify",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/window.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardwindow-verification-v1\",\n  \"result\": \"verified every atomic-unit transition in window\",\n  \"scan_sha256\": \"b8924a2e2afdd53badcfec8a515eca25293363c2db4359e940301dc422b4b225\",\n  \"transitions_with_reversal\": 0,\n  \"start_budget_units\": \"1000000000000000000\",\n  \"end_budget_units\": \"1000000000000000003\",\n  \"scope\": \"every consecutive atomic-unit budget in this window; arithmetic only, no payment or entitlement\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "exact plan",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-1/tools/optplan/optplan.py",
+      "--demo",
+      "--workers",
+      "2"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"workers\": 2,\n  \"method\": \"exhaustive event search with intentional idle time\",\n  \"task_limit\": 14,\n  \"finish\": 11,\n  \"schedule\": [\n    {\n      \"task\": \"brief\",\n      \"worker\": 1,\n      \"start\": 0,\n      \"finish\": 2\n    },\n    {\n      \"task\": \"build-a\",\n      \"worker\": 1,\n      \"start\": 2,\n      \"finish\": 7\n    },\n    {\n      \"task\": \"build-b\",\n      \"worker\": 2,\n      \"start\": 2,\n      \"finish\": 6\n    },\n    {\n      \"task\": \"check\",\n      \"worker\": 1,\n      \"start\": 7,\n      \"finish\": 10\n    },\n    {\n      \"task\": \"handoff\",\n      \"worker\": 1,\n      \"start\": 10,\n      \"finish\": 11\n    }\n  ],\n  \"states_examined\": 8,\n  \"state_limit\": 100000,\n  \"proven_optimal\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "approved ZIP extraction",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-2/tools/safezip/safezip.py",
+      "extract",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "test/scratch/gathering27-47zy0sqp/unpacked",
+      "--sha256",
+      "f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef",
+      "--seconds",
+      "10"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"mode\": \"extract\",\n  \"entries\": [\n    {\n      \"path\": \"openapi.json\",\n      \"kind\": \"file\",\n      \"bytes\": 23132,\n      \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n    },\n    {\n      \"path\": \"inert-note.txt\",\n      \"kind\": \"file\",\n      \"bytes\": 28,\n      \"sha256\": \"06e417019de0851572fca7b37c732aa874f4c20c62de0c818c579bfb717dacba\"\n    }\n  ],\n  \"total_bytes\": 23160,\n  \"content_checked\": true,\n  \"archive_sha256\": \"f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "audit extracted public description",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-2/tools/zipaudit/zipaudit.py",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "test/scratch/gathering27-47zy0sqp/unpacked",
+      "--sha256",
+      "f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef",
+      "--seconds",
+      "10",
+      "--nodes",
+      "2"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"mode\": \"audit\",\n  \"archive_sha256\": \"f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef\",\n  \"nodes_checked\": 2,\n  \"bytes_checked\": 23160,\n  \"exact_tree\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "exact ZTO allocation",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardsplit/rewardsplit.py",
+      "allocate",
+      "--input",
+      "line-3/tools/rewardsplit/example.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--output",
+      "test/scratch/gathering27-47zy0sqp/allocation.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "label": "independent audit of saved ZTO allocation",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardaudit/rewardaudit.py",
+      "check",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/allocation.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardaudit-v1\",\n  \"result\": \"verified exact quota floors, remainder boundary and conservation\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"budget_units\": \"1000000000000000000\",\n  \"floor_total_units\": \"999999999999999999\",\n  \"rounding_units\": 1,\n  \"cutoff_tie\": {\n    \"remainder_fraction\": \"1/3\",\n    \"tied_ids\": [\n      \"build\",\n      \"research\",\n      \"review\"\n    ],\n    \"awarded_ids\": [\n      \"build\"\n    ],\n    \"rule\": \"ascending ASCII contributor id\"\n  },\n  \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n  \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"contributors\": [\n    {\n      \"id\": \"build\",\n      \"quota_units_fraction\": \"1000000000000000000/3\",\n      \"floor_units\": \"333333333333333333\",\n      \"remainder_fraction\": \"1/3\",\n      \"rounding_unit_awarded\": true,\n      \"units\": \"333333333333333334\"\n    },\n    {\n      \"id\": \"research\",\n      \"quota_units_fraction\": \"1000000000000000000/3\",\n      \"floor_units\": \"333333333333333333\",\n      \"remainder_fraction\": \"1/3\",\n      \"rounding_unit_awarded\": false,\n      \"units\": \"333333333333333333\"\n    },\n    {\n      \"id\": \"review\",\n      \"quota_units_fraction\": \"1000000000000000000/3\",\n      \"floor_units\": \"333333333333333333\",\n      \"remainder_fraction\": \"1/3\",\n      \"rounding_unit_awarded\": false,\n      \"units\": \"333333333333333333\"\n    }\n  ],\n  \"scope\": \"offline arithmetic only; shared input validators, independent integer quota check; no entitlement, identity, balance or payment proof\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "independent audit refuses changed units",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardaudit/rewardaudit.py",
+      "check",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/tampered.json"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "",
+    "stderr": "rewardaudit: allocation row differs from its exact quota floor plus award\n"
+  },
+  {
+    "label": "verified receipt",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardreceipt/rewardreceipt.py",
+      "verify",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/allocation.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardreceipt-v1\",\n  \"result\": \"verified exact RewardSplit allocation\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"budget_units\": \"1000000000000000000\",\n  \"contributors\": 3,\n  \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n  \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "build review batches",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardbatch/rewardbatch.py",
+      "build",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/allocation.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--batch-size",
+      "2",
+      "--output",
+      "test/scratch/gathering27-47zy0sqp/batch.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "label": "verify review batches",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardbatch/rewardbatch.py",
+      "verify",
+      "--request",
+      "line-3/tools/rewardsplit/example.json",
+      "--report",
+      "test/scratch/gathering27-47zy0sqp/allocation.json",
+      "--metadata",
+      "line-3/tools/rewardsplit/zto-mainnet.json",
+      "--bundle",
+      "test/scratch/gathering27-47zy0sqp/batch.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardbatch-verification-v1\",\n  \"result\": \"verified complete exact partition\",\n  \"bundle_sha256\": \"c7fc118104a2e18ad7df6e485e005feab9f0b9f700e151018a3d29716133cede\",\n  \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n  \"batch_count\": 2,\n  \"contributor_count\": 3,\n  \"budget_units\": \"1000000000000000000\",\n  \"batched_units\": \"1000000000000000000\",\n  \"scope\": \"offline review batches only; no transaction, payment, entitlement or authorization\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "budget paradox warning",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-3/tools/rewardcompare/rewardcompare.py",
+      "demo"
+    ],
+    "expected_exit": 1,
+    "exit": 1,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardcompare-v1\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"before_budget_units\": \"25\",\n  \"after_budget_units\": \"26\",\n  \"budget_delta_units\": \"1\",\n  \"allocation_delta_sum_units\": \"1\",\n  \"contributors_losing_units\": [\n    \"d\",\n    \"e\"\n  ],\n  \"contributors_gaining_units\": [\n    \"a\",\n    \"b\",\n    \"c\"\n  ],\n  \"contributors_moving_against_budget\": [\n    \"d\",\n    \"e\"\n  ],\n  \"review_required\": true,\n  \"allocations\": [\n    {\n      \"id\": \"a\",\n      \"before_units\": \"7\",\n      \"after_units\": \"8\",\n      \"delta_units\": \"1\"\n    },\n    {\n      \"id\": \"b\",\n      \"before_units\": \"7\",\n      \"after_units\": \"8\",\n      \"delta_units\": \"1\"\n    },\n    {\n      \"id\": \"c\",\n      \"before_units\": \"4\",\n      \"after_units\": \"5\",\n      \"delta_units\": \"1\"\n    },\n    {\n      \"id\": \"d\",\n      \"before_units\": \"3\",\n      \"after_units\": \"2\",\n      \"delta_units\": \"-1\"\n    },\n    {\n      \"id\": \"e\",\n      \"before_units\": \"3\",\n      \"after_units\": \"2\",\n      \"delta_units\": \"-1\"\n    },\n    {\n      \"id\": \"f\",\n      \"before_units\": \"1\",\n      \"after_units\": \"1\",\n      \"delta_units\": \"0\"\n    }\n  ],\n  \"before_receipt\": {\n    \"schema\": \"rewardreceipt-v1\",\n    \"result\": \"verified exact RewardSplit allocation\",\n    \"token\": {\n      \"chain_id\": 1,\n      \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n      \"symbol\": \"ZTO\",\n      \"decimals\": 18,\n      \"block_number\": 26205319,\n      \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n    },\n    \"budget_units\": \"25\",\n    \"contributors\": 6,\n    \"request_sha256\": \"0c8aaeecd1ebc73700380f21cd783f2e7c72f3b9801c48d560e993492e975544\",\n    \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n    \"report_sha256\": \"242019588cdecea60c482eca654f3531b63fe37dcb6826fd2f9f29202906974d\",\n    \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n  },\n  \"after_receipt\": {\n    \"schema\": \"rewardreceipt-v1\",\n    \"result\": \"verified exact RewardSplit allocation\",\n    \"token\": {\n      \"chain_id\": 1,\n      \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n      \"symbol\": \"ZTO\",\n      \"decimals\": 18,\n      \"block_number\": 26205319,\n      \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n    },\n    \"budget_units\": \"26\",\n    \"contributors\": 6,\n    \"request_sha256\": \"132b9ff115d89dcc5f2be92951ca77ffb758015fa141404dd687443719555c9b\",\n    \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n    \"report_sha256\": \"8cb645f390d0ac76494ffbfc1609b87200498bcfdaf980b22fbce7480197cb5d\",\n    \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n  },\n  \"scope\": \"comparison of two complete allocations, not incremental payments or entitlement; no balance, identity, work or payment verified\",\n  \"warning\": \"largest remainder is not budget-monotonic; review decreases before replacing an allocation\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "fresh public API comparison",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "line-4/tools/authcheck/authcheck.py",
+      "compare",
+      "shared/api_bundle/imd-openapi.json",
+      "gathering/imd-openapi-current-27.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"no_detected_breakage\",\n  \"counts\": {\n    \"breaking\": 0,\n    \"review\": 0,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"authcheck-v1 (includes dependcheck and all earlier line 4 analyzers)\",\n  \"security_alternative_comparisons\": 11,\n  \"old_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"new_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "approved shared ZIP comparison",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "shared/api_bundle/api_bundle.py",
+      "test/scratch/gathering27-47zy0sqp/old.zip",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "--old-sha256",
+      "6d8cb209ed9ee7817901c589c5aa4fe8775161dd00881f4f74e9291f8e883414",
+      "--new-sha256",
+      "f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef",
+      "--seconds",
+      "10",
+      "--nodes",
+      "2"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"no_detected_breakage\",\n  \"counts\": {\n    \"breaking\": 0,\n    \"review\": 0,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"authcheck-v1 (includes dependcheck and all earlier line 4 analyzers)\",\n  \"security_alternative_comparisons\": 11,\n  \"bundle_inputs\": {\n    \"old\": {\n      \"archive_sha256\": \"6d8cb209ed9ee7817901c589c5aa4fe8775161dd00881f4f74e9291f8e883414\",\n      \"approved_sha256_checked\": true,\n      \"preflight\": {\n        \"entries\": 2,\n        \"directory_bytes\": 118,\n        \"zip64\": false\n      },\n      \"member\": \"openapi.json\",\n      \"member_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n      \"checked_files\": [\n        {\n          \"path\": \"openapi.json\",\n          \"bytes\": 23132,\n          \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n        },\n        {\n          \"path\": \"inert-note.txt\",\n          \"bytes\": 28,\n          \"sha256\": \"06e417019de0851572fca7b37c732aa874f4c20c62de0c818c579bfb717dacba\"\n        }\n      ],\n      \"all_payloads_crc_checked\": true\n    },\n    \"new\": {\n      \"archive_sha256\": \"f35489bbbc2c959ad26ae1c6030f31daba43069166baddb2ae37460d6dead9ef\",\n      \"approved_sha256_checked\": true,\n      \"preflight\": {\n        \"entries\": 2,\n        \"directory_bytes\": 118,\n        \"zip64\": false\n      },\n      \"member\": \"openapi.json\",\n      \"member_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n      \"checked_files\": [\n        {\n          \"path\": \"openapi.json\",\n          \"bytes\": 23132,\n          \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n        },\n        {\n          \"path\": \"inert-note.txt\",\n          \"bytes\": 28,\n          \"sha256\": \"06e417019de0851572fca7b37c732aa874f4c20c62de0c818c579bfb717dacba\"\n        }\n      ],\n      \"all_payloads_crc_checked\": true\n    }\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "label": "reject too-small shared node budget",
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "shared/api_bundle/api_bundle.py",
+      "test/scratch/gathering27-47zy0sqp/old.zip",
+      "test/scratch/gathering27-47zy0sqp/new.zip",
+      "--nodes",
+      "1"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\"ok\": false, \"error\": \"filesystem node limit exceeded\"}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "source": "https://api.imd.fun/openapi.json",
+  "method": "GET",
+  "user_agent": "Pepeolithic-Gathering/27.0",
+  "observed_at": "2026-10-16T20:28:10.996719+00:00",
+  "status": 200,
+  "bytes": 23132,
+  "sha256": "be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a",
+  "matches_bundled_capture": true,
+  "operations_called": false
+}

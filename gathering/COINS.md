@@ -1,11 +1,11 @@
 none
 
-All four goals can exist without a new coin. Exact allocation, receipts, batches,
-budget-window review and cumulative round totals already use real Ethereum ZTO
-(0xd782bdea4ef02a0bd391eb9089470c8080f0a68e), with IMD
-(0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7) supported second.
-Planning/slack analysis, ZIP extraction/audit/comparison and static API checks
-need no token or pool. None requires a new Uniswap v4 hook or a Sepolia contract.
+All four goals can exist without a new coin. Exact allocation, independent
+rounding audits, receipts, batches, budget windows and cumulative round review
+already use real Ethereum ZTO (0xd782bdea4ef02a0bd391eb9089470c8080f0a68e),
+with IMD (0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7) supported second.
+The remaining tools need no currency, balance, payment or pool.
 
-No coin-order.json or deploy-order.json is needed. No launch/check POST,
-payment, signature, transaction or deployment was performed.
+A new coin or Uniswap v4 hook adds no required capability. No contract requires
+Sepolia deployment. No coin-order.json or deploy-order.json is needed. Nothing
+was signed, paid, sent, deployed or posted to a launch/check endpoint.

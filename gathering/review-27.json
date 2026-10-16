@@ -1,0 +1,47 @@
+{
+  "name": "The Checked Threshold",
+  "meaning": "An ochre stone rests beneath a charcoal arch, marking what may pass.",
+  "wall_path": "artifacts/gathering/wall-v8.png",
+  "wall_format": "PNG",
+  "wall_color_mode": "RGB",
+  "wall_dimensions": [
+    1254,
+    1254
+  ],
+  "wall_bytes": 3013875,
+  "wall_sha256": "a1bdedbb485c7a8feb135b308f36b790c1f9f344b727f44c154535c5a66c7ab6",
+  "preview_path": "dist/gathering/27.jpg",
+  "preview_format": "JPEG",
+  "preview_dimensions": [
+    512,
+    512
+  ],
+  "preview_bytes": 87317,
+  "preview_sha256": "d153bef4b7d124687d756e46c92b1b8a2b39b225a134a98fda5c2f98decae97b",
+  "generation_tool": "image_gen.imagegen (built-in)",
+  "prompt": "Edit this exact inherited cave painting, keeping its square 1254x1254 size and preserving ALL existing figures and marks, Pepe, both five-digit hands, every crack, rock color, torchlight and framing. Add just one modest prehistoric cave-pigment motif on currently bare rock at upper right of center, in rectangle x=815..970 y=210..330: a small uneven charcoal archway with a red ochre stone resting at its threshold and a chalk-white pebble just beyond it. This symbolizes checking a bundle before letting it pass. Do not touch any existing mark. Keep the new mark flat, worn, hand-drawn, broken pigment with rough stone showing through, earthy charcoal/ochre/chalk only; not smooth vector art or 3D. Add no hands, no fingers, no frogs (existing recognizable Pepe with wide mouth/heavy lids is preserved), no letters, no numbers, no captions, signatures, logos, watermarks or frame. Only add the motif, do not erase, move, redraw or replace prior art. Save the resulting PNG only to artifacts/gathering/wall-v8.png, no other image files in the workspace.",
+  "edit_target": "artifacts/gathering/wall-v7.png",
+  "finishing": "Node preservation pass selects generated arch/stone/chalk pigment in actual generation location [735,230,180,145], an inspected bare-rock patch. Original RGB retained everywhere else. No extra image saved in workspace. Returned image bytes imported directly because the tool-reported file path was unavailable to the shell.",
+  "visual_review": {
+    "method": "Worker viewed inherited wall, final full PNG and 512-pixel JPEG using view_image and checked preservation measurements.",
+    "pepe": "Inherited wide mouth, heavy-lidded eyes and both arms remain.",
+    "digits_per_hand": [
+      5,
+      5
+    ],
+    "new_hands": 0,
+    "new_handprints": 0,
+    "palette": "charcoal black, red ochre and chalk-white flecks over unchanged warm rock",
+    "text_numbers_logos_frames_added": false,
+    "ancestor_marks_preserved": true,
+    "size_rock_light_framing_preserved": true,
+    "independent_human_approval": false
+  },
+  "visual_requirements_unmet": [],
+  "limitations": [
+    "Inherited rock looks photographic; preserved as required. No photographic or rendered figure was added.",
+    "Small chalk flecks diminish in the JPEG; the intended white pebble reads as worn chalk fragments.",
+    "Worker visual review and structural checks are not independent artistic certification."
+  ],
+  "skill_availability": "Listed imagegen SKILL.md was absent; used the installed image tool directly."
+}

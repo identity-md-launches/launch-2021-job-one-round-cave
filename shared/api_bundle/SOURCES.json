@@ -40,5 +40,17 @@
     "source_sha256": "d699701012be84d775c024fc75917d354f24ae2b202fd052053fbe1a0ff5a3bf",
     "sha256": "e3c8e71b2c0bd7fbb549d38e42e1c7bac8f317e3efb5c12eb7892af24c22bfdf",
     "adaptation": "Sibling UniqueCheck import path adjusted for shared vendor layout only."
+  },
+  "vendor/zipgate.py": {
+    "source": "line-2/tools/zipgate/zipgate.py",
+    "source_sha256": "1e02964a97a88ce3e720707476a8376f021a0bfa61dfd3bd38d49de9a4494d87",
+    "sha256": "b7d2f79fc7531d167fdaee8bb012cc41724df390e9ca85b93911f3d09b68fe53",
+    "adaptation": "Sibling imports and demo capture path adapted to standalone shared layout; analysis unchanged."
+  },
+  "vendor/authcheck.py": {
+    "source": "line-4/tools/authcheck/authcheck.py",
+    "source_sha256": "b600bac9e0597cc292102525dee8fc4519ace89839359fd1f95a69a67308b1f4",
+    "sha256": "f8b32ad43dad9dc902da5cc9952ce59dec2f40c4c19b5e8ce96846a3d1a76e16",
+    "adaptation": "Sibling imports and demo capture path adapted to standalone shared layout; analysis unchanged."
   }
 }

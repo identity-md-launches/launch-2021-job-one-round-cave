@@ -1,0 +1,840 @@
+[
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/frontier/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "............\n----------------------------------------------------------------------\nRan 12 tests in 0.017s\n\nOK\n"
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/frontier/frontier.py",
+      "--demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"elapsed\": \"3\",\n  \"deadline\": \"10\",\n  \"completed\": [\n    \"read\"\n  ],\n  \"running\": [\n    {\n      \"task\": \"build\",\n      \"remaining\": \"4\"\n    }\n  ],\n  \"free_workers\": 1,\n  \"ready\": [\n    {\n      \"task\": \"fixtures\",\n      \"minutes\": \"3\",\n      \"downstream_minutes\": \"5\"\n    }\n  ],\n  \"blocked\": [\n    {\n      \"task\": \"check\",\n      \"waiting_for\": [\n        \"build\",\n        \"fixtures\"\n      ]\n    }\n  ],\n  \"remaining_work\": \"9\",\n  \"dependency_lower_bound\": \"6\",\n  \"capacity_lower_bound\": \"9/2\",\n  \"remaining_lower_bound\": \"6\",\n  \"available_minutes\": \"7\",\n  \"deadline_status\": \"not_ruled_out\",\n  \"scope\": \"Snapshot only. Lower bounds cannot prove feasibility. Ready ordering is a heuristic, not an optimal launch decision. No tasks executed.\",\n  \"assumptions\": \"Interchangeable workers; running work stays active; unfinished estimates replace original durations; no historical timing certified.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/frontier/frontier.py",
+      "--tasks",
+      "line-1/tools/frontier/tasks.json",
+      "--progress",
+      "line-1/tools/frontier/progress.json",
+      "--workers",
+      "2",
+      "--elapsed",
+      "3",
+      "--budget",
+      "10"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"elapsed\": \"3\",\n  \"deadline\": \"10\",\n  \"completed\": [\n    \"read\"\n  ],\n  \"running\": [\n    {\n      \"task\": \"build\",\n      \"remaining\": \"4\"\n    }\n  ],\n  \"free_workers\": 1,\n  \"ready\": [\n    {\n      \"task\": \"fixtures\",\n      \"minutes\": \"3\",\n      \"downstream_minutes\": \"5\"\n    }\n  ],\n  \"blocked\": [\n    {\n      \"task\": \"check\",\n      \"waiting_for\": [\n        \"build\",\n        \"fixtures\"\n      ]\n    }\n  ],\n  \"remaining_work\": \"9\",\n  \"dependency_lower_bound\": \"6\",\n  \"capacity_lower_bound\": \"9/2\",\n  \"remaining_lower_bound\": \"6\",\n  \"available_minutes\": \"7\",\n  \"deadline_status\": \"not_ruled_out\",\n  \"scope\": \"Snapshot only. Lower bounds cannot prove feasibility. Ready ordering is a heuristic, not an optimal launch decision. No tasks executed.\",\n  \"assumptions\": \"Interchangeable workers; running work stays active; unfinished estimates replace original durations; no historical timing certified.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/zipgate/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_ambiguous_comment_refused (__main__.GateTests.test_ambiguous_comment_refused) ... ok\ntest_archive_byte_boundary (__main__.GateTests.test_archive_byte_boundary) ... ok\ntest_bad_local_offset (__main__.GateTests.test_bad_local_offset) ... ok\ntest_cancellation_and_deadline (__main__.GateTests.test_cancellation_and_deadline) ... ok\ntest_cli (__main__.GateTests.test_cli) ... ok\ntest_comments_and_unknown_extra (__main__.GateTests.test_comments_and_unknown_extra) ... ok\ntest_content_corruption_still_checked (__main__.GateTests.test_content_corruption_still_checked) ... ok\ntest_declared_entry_limit (__main__.GateTests.test_declared_entry_limit) ... ok\ntest_digest_rejected_before_parser (__main__.GateTests.test_digest_rejected_before_parser) ... ok\ntest_directory_offset_and_size (__main__.GateTests.test_directory_offset_and_size) ... ok\ntest_directory_signature (__main__.GateTests.test_directory_signature) ... ok\ntest_directory_variable_fields (__main__.GateTests.test_directory_variable_fields) ... ok\ntest_empty_archive (__main__.GateTests.test_empty_archive) ... ok\ntest_exact_directory_boundary (__main__.GateTests.test_exact_directory_boundary) ... ok\ntest_invalid_limits (__main__.GateTests.test_invalid_limits) ... ok\ntest_malformed_extra (__main__.GateTests.test_malformed_extra) ... ok\ntest_multidisk (__main__.GateTests.test_multidisk) ... ok\ntest_path_rejection_still_checked (__main__.GateTests.test_path_rejection_still_checked) ... ok\ntest_replacement_cannot_bypass_gate (__main__.GateTests.test_replacement_cannot_bypass_gate) ... ok\ntest_seeded_many_valid_layouts (__main__.GateTests.test_seeded_many_valid_layouts) ... ok\ntest_sfx_prefix (__main__.GateTests.test_sfx_prefix) ... ok\ntest_spoofed_count_high (__main__.GateTests.test_spoofed_count_high) ... ok\ntest_spoofed_count_low (__main__.GateTests.test_spoofed_count_low) ... ok\ntest_stored_and_deflated_extract (__main__.GateTests.test_stored_and_deflated_extract) ... ok\ntest_trailing_bytes (__main__.GateTests.test_trailing_bytes) ... ok\ntest_truncation_every_offset (__main__.GateTests.test_truncation_every_offset) ... ok\ntest_zip64_locator_hidden_in_member_comment (__main__.GateTests.test_zip64_locator_hidden_in_member_comment) ... ok\ntest_zip64_markers (__main__.GateTests.test_zip64_markers) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 0.079s\n\nOK\n"
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/zipgate/demo.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"network_used\": false,\n  \"source\": \"https://api.imd.fun/openapi.json\",\n  \"source_bytes\": 23132,\n  \"source_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"large_directory_refused\": \"directory byte limit exceeded before ZIP parsing\",\n  \"extracted_bytes_identical\": true,\n  \"report\": {\n    \"ok\": true,\n    \"mode\": \"extract\",\n    \"entries\": [\n      {\n        \"path\": \"docs/imd/openapi.json\",\n        \"kind\": \"file\",\n        \"bytes\": 23132,\n        \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n      }\n    ],\n    \"total_bytes\": 23132,\n    \"content_checked\": true,\n    \"archive_sha256\": \"a19b6d49f1bad5d27b51696e8050555390f1a006fc3420c87d57c8782257c718\",\n    \"preflight\": {\n      \"entries\": 1,\n      \"directory_bytes\": 67,\n      \"zip64\": false\n    }\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardaudit/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_cli_files_tamper_duplicate_keys_overwrite (__main__.AuditTests.test_cli_files_tamper_duplicate_keys_overwrite) ... ok\ntest_demo_quota_and_ascii_tie (__main__.AuditTests.test_demo_quota_and_ascii_tie) ... ok\ntest_independent_of_allocator (__main__.AuditTests.test_independent_of_allocator) ... ok\ntest_input_refusals (__main__.AuditTests.test_input_refusals) ... ok\ntest_no_rounding_and_zero_weights (__main__.AuditTests.test_no_rounding_and_zero_weights) ... ok\ntest_order_independence_and_alias_isolation (__main__.AuditTests.test_order_independence_and_alias_isolation) ... ok\ntest_output_bound (__main__.AuditTests.test_output_bound) ... ok\ntest_real_public_address_consistency (__main__.AuditTests.test_real_public_address_consistency) ... ok\ntest_report_mutations (__main__.AuditTests.test_report_mutations) ... ok\ntest_small_exhaustive_subset_oracle (__main__.AuditTests.test_small_exhaustive_subset_oracle) ... ok\ntest_uint256_and_fractional_weights (__main__.AuditTests.test_uint256_and_fractional_weights) ... ok\ntest_wrong_remainder_winner (__main__.AuditTests.test_wrong_remainder_winner) ... ok\ntest_wrong_tie_winner_preserving_total (__main__.AuditTests.test_wrong_tie_winner_preserving_total) ... ok\n\n----------------------------------------------------------------------\nRan 13 tests in 0.182s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardaudit/rewardaudit.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardaudit-v1\",\n  \"result\": \"verified exact quota floors, remainder boundary and conservation\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"budget_units\": \"1000000000000000000\",\n  \"floor_total_units\": \"999999999999999999\",\n  \"rounding_units\": 1,\n  \"cutoff_tie\": {\n    \"remainder_fraction\": \"1/3\",\n    \"tied_ids\": [\n      \"build\",\n      \"research\",\n      \"review\"\n    ],\n    \"awarded_ids\": [\n      \"build\"\n    ],\n    \"rule\": \"ascending ASCII contributor id\"\n  },\n  \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n  \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"contributors\": [\n    {\n      \"id\": \"build\",\n      \"quota_units_fraction\": \"1000000000000000000/3\",\n      \"floor_units\": \"333333333333333333\",\n      \"remainder_fraction\": \"1/3\",\n      \"rounding_unit_awarded\": true,\n      \"units\": \"333333333333333334\"\n    },\n    {\n      \"id\": \"research\",\n      \"quota_units_fraction\": \"1000000000000000000/3\",\n      \"floor_units\": \"333333333333333333\",\n      \"remainder_fraction\": \"1/3\",\n      \"rounding_unit_awarded\": false,\n      \"units\": \"333333333333333333\"\n    },\n    {\n      \"id\": \"review\",\n      \"quota_units_fraction\": \"1000000000000000000/3\",\n      \"floor_units\": \"333333333333333333\",\n      \"remainder_fraction\": \"1/3\",\n      \"rounding_unit_awarded\": false,\n      \"units\": \"333333333333333333\"\n    }\n  ],\n  \"scope\": \"offline arithmetic only; shared input validators, independent integer quota check; no entitlement, identity, balance or payment proof\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/authcheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": ".............\n----------------------------------------------------------------------\nRan 13 tests in 3.935s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/authcheck/authcheck.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 1,\n    \"review\": 1,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"security_requirement_incompatible\",\n      \"location\": \"/paths/~1requests~1capabilities/get/security\",\n      \"message\": \"Old effective alternative 0 {} does not meet any new alternative using only its declared schemes and scopes/roles. This is a symbolic requirement witness, not a credential or runtime authorization test.\"\n    },\n    {\n      \"severity\": \"review\",\n      \"code\": \"security_changed\",\n      \"location\": \"/paths/~1requests~1capabilities/get/security\",\n      \"message\": \"Effective security policy changed.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"authcheck-v1 (includes dependcheck and all earlier line 4 analyzers)\",\n  \"security_alternative_comparisons\": 12,\n  \"capture_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"baseline_source\": \"https://api.imd.fun/openapi.json\",\n  \"demo\": \"Hypothetically remove the anonymous override from the captured capabilities operation; no operation called.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/authcheck/authcheck.py",
+      "compare",
+      "line-4/tools/apidelta/imd-openapi.json",
+      "line-4/live-openapi-27.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"no_detected_breakage\",\n  \"counts\": {\n    \"breaking\": 0,\n    \"review\": 0,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"authcheck-v1 (includes dependcheck and all earlier line 4 analyzers)\",\n  \"security_alternative_comparisons\": 11,\n  \"old_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"new_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/slackmap/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_all_critical_branches (__main__.Checks.test_all_critical_branches) ... ok\ntest_cli_and_file_boundaries (__main__.Checks.test_cli_and_file_boundaries) ... ok\ntest_decimal_and_extremes (__main__.Checks.test_decimal_and_extremes) ... ok\ntest_demo_and_deadline (__main__.Checks.test_demo_and_deadline) ... ok\ntest_fixed_worker_order (__main__.Checks.test_fixed_worker_order) ... ok\ntest_integrates_existing_planners (__main__.Checks.test_integrates_existing_planners) ... ok\ntest_max_chain_and_determinism (__main__.Checks.test_max_chain_and_determinism) ... ok\ntest_oracle_and_float_sensitivity (__main__.Checks.test_oracle_and_float_sensitivity) ... ok\ntest_rejects_invalid_inputs (__main__.Checks.test_rejects_invalid_inputs) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.250s\n\nOK\n"
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/slackmap/slackmap.py",
+      "--demo",
+      "--budget",
+      "10"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"mode\": \"dependencies_only\",\n  \"minimum_finish_in_model\": \"9\",\n  \"target_finish\": \"10\",\n  \"deadline_supplied\": true,\n  \"deadline_feasible_in_model\": true,\n  \"deadline_slack\": \"1\",\n  \"one_longest_path\": [\n    \"read\",\n    \"build\",\n    \"check\"\n  ],\n  \"worker_order_edges\": [],\n  \"tasks\": [\n    {\n      \"task\": \"build\",\n      \"minutes\": \"5\",\n      \"earliest_start\": \"2\",\n      \"earliest_finish\": \"7\",\n      \"latest_start\": \"3\",\n      \"latest_finish\": \"8\",\n      \"total_float\": \"1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"check\",\n      \"minutes\": \"2\",\n      \"earliest_start\": \"7\",\n      \"earliest_finish\": \"9\",\n      \"latest_start\": \"8\",\n      \"latest_finish\": \"10\",\n      \"total_float\": \"1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"fixtures\",\n      \"minutes\": \"3\",\n      \"earliest_start\": \"2\",\n      \"earliest_finish\": \"5\",\n      \"latest_start\": \"5\",\n      \"latest_finish\": \"8\",\n      \"total_float\": \"3\",\n      \"free_float\": \"2\",\n      \"critical_to_minimum\": false\n    },\n    {\n      \"task\": \"read\",\n      \"minutes\": \"2\",\n      \"earliest_start\": \"0\",\n      \"earliest_finish\": \"2\",\n      \"latest_start\": \"1\",\n      \"latest_finish\": \"3\",\n      \"total_float\": \"1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    }\n  ],\n  \"scope\": \"Unlimited workers: dependency lower bound only, not finite-worker feasibility.\",\n  \"warning\": \"Float is individual, not additive or permission to delay every task. Estimates are assumptions.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/slackmap/slackmap.py",
+      "--demo",
+      "--budget",
+      "8"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"mode\": \"dependencies_only\",\n  \"minimum_finish_in_model\": \"9\",\n  \"target_finish\": \"8\",\n  \"deadline_supplied\": true,\n  \"deadline_feasible_in_model\": false,\n  \"deadline_slack\": \"-1\",\n  \"one_longest_path\": [\n    \"read\",\n    \"build\",\n    \"check\"\n  ],\n  \"worker_order_edges\": [],\n  \"tasks\": [\n    {\n      \"task\": \"build\",\n      \"minutes\": \"5\",\n      \"earliest_start\": \"2\",\n      \"earliest_finish\": \"7\",\n      \"latest_start\": \"1\",\n      \"latest_finish\": \"6\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"check\",\n      \"minutes\": \"2\",\n      \"earliest_start\": \"7\",\n      \"earliest_finish\": \"9\",\n      \"latest_start\": \"6\",\n      \"latest_finish\": \"8\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"fixtures\",\n      \"minutes\": \"3\",\n      \"earliest_start\": \"2\",\n      \"earliest_finish\": \"5\",\n      \"latest_start\": \"3\",\n      \"latest_finish\": \"6\",\n      \"total_float\": \"1\",\n      \"free_float\": \"2\",\n      \"critical_to_minimum\": false\n    },\n    {\n      \"task\": \"read\",\n      \"minutes\": \"2\",\n      \"earliest_start\": \"0\",\n      \"earliest_finish\": \"2\",\n      \"latest_start\": \"-1\",\n      \"latest_finish\": \"1\",\n      \"total_float\": \"-1\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    }\n  ],\n  \"scope\": \"Unlimited workers: dependency lower bound only, not finite-worker feasibility.\",\n  \"warning\": \"Float is individual, not additive or permission to delay every task. Estimates are assumptions.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/slackmap/slackmap.py",
+      "--tasks",
+      "line-1/tools/plancheck/tasks.json",
+      "--plan",
+      "line-1/tools/plancheck/plan.json",
+      "--workers",
+      "2",
+      "--budget",
+      "10"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"mode\": \"fixed_worker_order\",\n  \"minimum_finish_in_model\": \"5\",\n  \"target_finish\": \"10\",\n  \"deadline_supplied\": true,\n  \"deadline_feasible_in_model\": true,\n  \"deadline_slack\": \"5\",\n  \"one_longest_path\": [\n    \"a\",\n    \"b\"\n  ],\n  \"worker_order_edges\": [],\n  \"tasks\": [\n    {\n      \"task\": \"a\",\n      \"minutes\": \"3\",\n      \"earliest_start\": \"0\",\n      \"earliest_finish\": \"3\",\n      \"latest_start\": \"5\",\n      \"latest_finish\": \"8\",\n      \"total_float\": \"5\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    },\n    {\n      \"task\": \"b\",\n      \"minutes\": \"2\",\n      \"earliest_start\": \"3\",\n      \"earliest_finish\": \"5\",\n      \"latest_start\": \"8\",\n      \"latest_finish\": \"10\",\n      \"total_float\": \"5\",\n      \"free_float\": \"0\",\n      \"critical_to_minimum\": true\n    }\n  ],\n  \"scope\": \"Fixed assignment/order; input idle gaps may be removed. No order optimization.\",\n  \"warning\": \"Float is individual, not additive or permission to delay every task. Estimates are assumptions.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/zipdiff/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_added_removed_and_empty_directories (__main__.DiffTests.test_added_removed_and_empty_directories) ... ok\ntest_case_rename_is_removal_plus_addition (__main__.DiffTests.test_case_rename_is_removal_plus_addition) ... ok\ntest_cli_equal_changed_rejected (__main__.DiffTests.test_cli_equal_changed_rejected) ... ok\ntest_corruption_even_with_matching_approval (__main__.DiffTests.test_corruption_even_with_matching_approval) ... ok\ntest_digest_mismatch_either_side_and_uppercase (__main__.DiffTests.test_digest_mismatch_either_side_and_uppercase) ... ok\ntest_each_archive_limits (__main__.DiffTests.test_each_archive_limits) ... ok\ntest_identical_empty_archives (__main__.DiffTests.test_identical_empty_archives) ... ok\ntest_invalid_time_before_read (__main__.DiffTests.test_invalid_time_before_read) ... ok\ntest_missing_or_invalid_approval_before_read (__main__.DiffTests.test_missing_or_invalid_approval_before_read) ... ok\ntest_no_writes_and_negative_delta (__main__.DiffTests.test_no_writes_and_negative_delta) ... ok\ntest_one_deadline_covers_both_archives (__main__.DiffTests.test_one_deadline_covers_both_archives) ... ok\ntest_repack_and_explicit_parents_are_same_tree (__main__.DiffTests.test_repack_and_explicit_parents_are_same_tree) ... ok\ntest_same_size_content_change (__main__.DiffTests.test_same_size_content_change) ... ok\ntest_symlink_and_outside_paths (__main__.DiffTests.test_symlink_and_outside_paths) ... ok\ntest_type_swap_both_directions (__main__.DiffTests.test_type_swap_both_directions) ... ok\ntest_unsafe_archive_either_side (__main__.DiffTests.test_unsafe_archive_either_side) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.078s\n\nOK\n"
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/zipdiff/demo.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"network_used\": false,\n  \"source\": \"https://api.imd.fun/openapi.json\",\n  \"source_bytes\": 23132,\n  \"repacked\": {\n    \"ok\": true,\n    \"mode\": \"compare\",\n    \"content_checked\": true,\n    \"before_sha256\": \"ea48d9405a1562205329ab665c69f055070f6094e9d87855b89fd8797e3a7a91\",\n    \"after_sha256\": \"188ac240dede353ba57c567b8e521b60a7b5b9334dbfa297abb49e0ef35da785\",\n    \"archive_bytes_equal\": false,\n    \"trees_equal\": true,\n    \"before_nodes\": 3,\n    \"after_nodes\": 3,\n    \"before_bytes\": 23132,\n    \"after_bytes\": 23132,\n    \"byte_delta\": 0,\n    \"unchanged_nodes\": 3,\n    \"counts\": {\n      \"added\": 0,\n      \"removed\": 0,\n      \"type_changed\": 0,\n      \"content_changed\": 0\n    },\n    \"changes\": []\n  },\n  \"hypothetical_same_size_edit\": {\n    \"ok\": true,\n    \"mode\": \"compare\",\n    \"content_checked\": true,\n    \"before_sha256\": \"ea48d9405a1562205329ab665c69f055070f6094e9d87855b89fd8797e3a7a91\",\n    \"after_sha256\": \"11e474f9d1beec678217eaf6a93ead31a09aab14b433a96f4ddcc2876661fd39\",\n    \"archive_bytes_equal\": false,\n    \"trees_equal\": false,\n    \"before_nodes\": 3,\n    \"after_nodes\": 3,\n    \"before_bytes\": 23132,\n    \"after_bytes\": 23132,\n    \"byte_delta\": 0,\n    \"unchanged_nodes\": 2,\n    \"counts\": {\n      \"added\": 0,\n      \"removed\": 0,\n      \"type_changed\": 0,\n      \"content_changed\": 1\n    },\n    \"changes\": [\n      {\n        \"path\": \"docs/imd/openapi.json\",\n        \"change\": \"content_changed\",\n        \"before\": {\n          \"kind\": \"file\",\n          \"bytes\": 23132,\n          \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n        },\n        \"after\": {\n          \"kind\": \"file\",\n          \"bytes\": 23132,\n          \"sha256\": \"764091492865576d86286c79317f95908dedcec124030b2f884299403c8ecbbd\"\n        }\n      }\n    ]\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardmerge/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.236s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardmerge/rewardmerge.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"merged\": {\n    \"schema\": \"rewardmerge-v1\",\n    \"token\": {\n      \"chain_id\": 1,\n      \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n      \"symbol\": \"ZTO\",\n      \"decimals\": 18,\n      \"block_number\": 26205319,\n      \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n    },\n    \"manifest_sha256\": \"be90a91db6da01f9b1b75a72662ea88d026d419bdd64a2c7d72a13933af4608f\",\n    \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n    \"round_count\": 2,\n    \"budget_units\": \"3000000000000000000\",\n    \"budget_amount\": \"3.000000000000000000\",\n    \"unallocated_units\": \"0\",\n    \"all_recipients_supplied\": false,\n    \"allocations\": [\n      {\n        \"id\": \"build\",\n        \"units\": \"1000000000000000001\",\n        \"amount\": \"1.000000000000000001\",\n        \"rounds\": [\n          \"first\",\n          \"second\"\n        ]\n      },\n      {\n        \"id\": \"research\",\n        \"units\": \"333333333333333333\",\n        \"amount\": \"0.333333333333333333\",\n        \"rounds\": [\n          \"first\"\n        ]\n      },\n      {\n        \"id\": \"review\",\n        \"units\": \"1666666666666666666\",\n        \"amount\": \"1.666666666666666666\",\n        \"rounds\": [\n          \"first\",\n          \"second\"\n        ]\n      }\n    ],\n    \"round_receipts\": [\n      {\n        \"id\": \"first\",\n        \"receipt\": {\n          \"schema\": \"rewardreceipt-v1\",\n          \"result\": \"verified exact RewardSplit allocation\",\n          \"token\": {\n            \"chain_id\": 1,\n            \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n            \"symbol\": \"ZTO\",\n            \"decimals\": 18,\n            \"block_number\": 26205319,\n            \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n          },\n          \"budget_units\": \"1000000000000000000\",\n          \"contributors\": 3,\n          \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n          \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n          \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n          \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n        }\n      },\n      {\n        \"id\": \"second\",\n        \"receipt\": {\n          \"schema\": \"rewardreceipt-v1\",\n          \"result\": \"verified exact RewardSplit allocation\",\n          \"token\": {\n            \"chain_id\": 1,\n            \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n            \"symbol\": \"ZTO\",\n            \"decimals\": 18,\n            \"block_number\": 26205319,\n            \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n          },\n          \"budget_units\": \"2000000000000000000\",\n          \"contributors\": 2,\n          \"request_sha256\": \"075c186cd5f0b835954157e17fdc29808f1503af75986f1b3c6330f8945e8d90\",\n          \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n          \"report_sha256\": \"459eb99d7492b3b6c7963b244ca9ae7992d8a49d1f99f704613394cb44a04795\",\n          \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n        }\n      }\n    ],\n    \"repeated_reports\": [],\n    \"review_required\": false,\n    \"scope\": \"sum of verified independent allocations; repeated reports counted once per round label; no entitlement, identity, balance or payment verified\"\n  },\n  \"verification\": {\n    \"schema\": \"rewardmerge-verification-v1\",\n    \"result\": \"verified cumulative allocation arithmetic\",\n    \"report_sha256\": \"56978e7ff138260b3cdf56e904e6e6499b9d2288313461378fc8ba0ac4e62750\",\n    \"budget_units\": \"3000000000000000000\",\n    \"review_required\": false,\n    \"scope\": \"sum of verified independent allocations; repeated reports counted once per round label; no entitlement, identity, balance or payment verified\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/dependcheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.555s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/dependcheck/dependcheck.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 1,\n    \"review\": 1,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [\n    {\n      \"severity\": \"review\",\n      \"code\": \"schema_constraint_changed\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/dependentRequired\",\n      \"message\": \"Constraint changed; this rule needs human review.\"\n    },\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"dependent_required_incompatible\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/dependentRequired/clientReference\",\n      \"message\": \"New request dependency on \\\"clientReference\\\" requires [\\\"clientContext\\\"], not implied by the old request presence rules. Other constraints may make the case unreachable.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"dependcheck-v1 (includes uniquecheck, constcheck, multiplecheck, boundcheck)\",\n  \"capture_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"demo\": \"Hypothetical dependency added to the captured public IMD description; no operation called.\",\n  \"illustrative_presence_change\": \"clientReference now also requires clientContext; values and other required fields are outside this illustration.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/plancheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_bad_graphs (__main__.Checks.test_bad_graphs) ... ok\ntest_bad_values_and_progress (__main__.Checks.test_bad_values_and_progress) ... ok\ntest_cli (__main__.Checks.test_cli) ... ok\ntest_coverage (__main__.Checks.test_coverage) ... ok\ntest_deadline_and_untrusted_claims (__main__.Checks.test_deadline_and_untrusted_claims) ... ok\ntest_demo (__main__.Checks.test_demo) ... ok\ntest_dependency (__main__.Checks.test_dependency) ... ok\ntest_durations_and_intervals (__main__.Checks.test_durations_and_intervals) ... ok\ntest_exact_decimal (__main__.Checks.test_exact_decimal) ... ok\ntest_existing_planners (__main__.Checks.test_existing_planners) ... ok\ntest_idle_is_valid (__main__.Checks.test_idle_is_valid) ... ok\ntest_nested_worker_overlaps (__main__.Checks.test_nested_worker_overlaps) ... ok\ntest_read_boundary (__main__.Checks.test_read_boundary) ... ok\ntest_valid_and_immutable (__main__.Checks.test_valid_and_immutable) ... ok\ntest_worker_and_units (__main__.Checks.test_worker_and_units) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.110s\n\nOK\n"
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/plancheck/plancheck.py",
+      "--demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"valid_example\": {\n    \"valid\": true,\n    \"violations\": [],\n    \"tasks_expected\": 4,\n    \"schedule_entries\": 4,\n    \"workers_checked\": 2,\n    \"deadline_checked\": true,\n    \"arithmetic\": \"exact decimal values; no tolerance\",\n    \"scope\": \"full schedule feasibility at supplied estimates; no execution or optimality proof\"\n  },\n  \"tampered_example\": {\n    \"valid\": false,\n    \"violations\": [\n      \"dependency_violation:build->check\",\n      \"worker_overlap:1:check\"\n    ],\n    \"tasks_expected\": 4,\n    \"schedule_entries\": 4,\n    \"workers_checked\": 2,\n    \"deadline_checked\": true,\n    \"arithmetic\": \"exact decimal values; no tolerance\",\n    \"scope\": \"full schedule feasibility at supplied estimates; no execution or optimality proof\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/plancheck/plancheck.py",
+      "--tasks",
+      "line-1/tools/plancheck/tasks.json",
+      "--plan",
+      "line-1/tools/plancheck/plan.json",
+      "--workers",
+      "2",
+      "--budget",
+      "5"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"valid\": true,\n  \"violations\": [],\n  \"tasks_expected\": 2,\n  \"schedule_entries\": 2,\n  \"workers_checked\": 2,\n  \"deadline_checked\": true,\n  \"arithmetic\": \"exact decimal values; no tolerance\",\n  \"scope\": \"full schedule feasibility at supplied estimates; no execution or optimality proof\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/replan/replan.py",
+      "--input",
+      "line-1/tools/replan/example.json",
+      "--workers",
+      "2",
+      "--budget",
+      "27",
+      "--margin-percent",
+      "20"
+    ],
+    "expected_exit": 2,
+    "exit": 2,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"elapsed_minutes\": 9,\n  \"workers\": 2,\n  \"budget\": 27.0,\n  \"remaining_budget\": 18.0,\n  \"margin_percent\": 20.0,\n  \"completed\": [\n    \"prepare-fixtures\",\n    \"read-brief\"\n  ],\n  \"schedule\": [\n    {\n      \"task\": \"implement\",\n      \"worker\": 1,\n      \"start\": 9,\n      \"finish\": 21.0,\n      \"state\": \"running\",\n      \"remaining_minutes\": 12.0\n    },\n    {\n      \"task\": \"verify\",\n      \"worker\": 1,\n      \"start\": 21.0,\n      \"finish\": 27.0,\n      \"state\": \"pending\",\n      \"remaining_minutes\": 6.0\n    },\n    {\n      \"task\": \"write-handoff\",\n      \"worker\": 1,\n      \"start\": 27.0,\n      \"finish\": 29.4,\n      \"state\": \"pending\",\n      \"remaining_minutes\": 2.4\n    }\n  ],\n  \"finish\": 29.4,\n  \"remaining_minutes\": 20.4,\n  \"lower_bound_remaining\": 20.4,\n  \"earliest_possible_finish\": 29.4,\n  \"critical_path\": [\n    \"implement\",\n    \"verify\",\n    \"write-handoff\"\n  ],\n  \"fits_budget\": false,\n  \"deadline_verdict\": \"impossible_at_estimates\",\n  \"slack\": -2.3999999999999986,\n  \"method\": \"nonpreemptive longest downstream first; running tasks pinned to their workers\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/zipaudit/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_approval_required_and_bound (__main__.AuditTests.test_approval_required_and_bound) ... ok\ntest_changed_size (__main__.AuditTests.test_changed_size) ... ok\ntest_cli (__main__.AuditTests.test_cli) ... ok\ntest_cooperative_deadline_in_tree (__main__.AuditTests.test_cooperative_deadline_in_tree) ... ok\ntest_empty_archive (__main__.AuditTests.test_empty_archive) ... ok\ntest_exact_tree_with_implicit_and_empty_directories (__main__.AuditTests.test_exact_tree_with_implicit_and_empty_directories) ... ok\ntest_extra_file_and_directory (__main__.AuditTests.test_extra_file_and_directory) ... ok\ntest_invalid_seconds (__main__.AuditTests.test_invalid_seconds) ... ok\ntest_missing_empty_directory (__main__.AuditTests.test_missing_empty_directory) ... ok\ntest_missing_file (__main__.AuditTests.test_missing_file) ... ok\ntest_no_mutation (__main__.AuditTests.test_no_mutation) ... ok\ntest_reference_limits (__main__.AuditTests.test_reference_limits) ... ok\ntest_root_symlink (__main__.AuditTests.test_root_symlink) ... ok\ntest_same_size_change (__main__.AuditTests.test_same_size_change) ... ok\ntest_symlink_file_and_directory (__main__.AuditTests.test_symlink_file_and_directory) ... ok\ntest_type_swap (__main__.AuditTests.test_type_swap) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.063s\n\nOK\n"
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/zipaudit/demo.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"network_used\": false,\n  \"source\": \"https://api.imd.fun/openapi.json\",\n  \"source_bytes\": 23132,\n  \"before\": {\n    \"ok\": true,\n    \"mode\": \"audit\",\n    \"archive_sha256\": \"a19b6d49f1bad5d27b51696e8050555390f1a006fc3420c87d57c8782257c718\",\n    \"nodes_checked\": 3,\n    \"bytes_checked\": 23132,\n    \"exact_tree\": true\n  },\n  \"same_size_damage_rejected\": \"content differs: 'docs/imd/openapi.json'\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardwindow/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_cli_roundtrip (__main__.WindowTests.test_cli_roundtrip) ... ok\ntest_limits (__main__.WindowTests.test_limits) ... ok\ntest_paradox_and_verification (__main__.WindowTests.test_paradox_and_verification) ... ok\ntest_seeded_consecutive_conservation (__main__.WindowTests.test_seeded_consecutive_conservation) ... ok\ntest_tampering_rejected (__main__.WindowTests.test_tampering_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.181s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardwindow/rewardwindow.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"scan\": {\n    \"schema\": \"rewardwindow-v1\",\n    \"token\": {\n      \"chain_id\": 1,\n      \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n      \"symbol\": \"ZTO\",\n      \"decimals\": 18,\n      \"block_number\": 26205319,\n      \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n    },\n    \"request_sha256\": \"0c8aaeecd1ebc73700380f21cd783f2e7c72f3b9801c48d560e993492e975544\",\n    \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n    \"start_report_sha256\": \"242019588cdecea60c482eca654f3531b63fe37dcb6826fd2f9f29202906974d\",\n    \"end_report_sha256\": \"a9c526a00c7834cdfd553967548a0dc4c85dfd83e59edf3c714e714c28f641e1\",\n    \"start_budget_units\": \"25\",\n    \"end_budget_units\": \"28\",\n    \"steps_checked\": 3,\n    \"transitions_with_reversal\": 1,\n    \"contributors_with_reversals\": [\n      {\n        \"id\": \"d\",\n        \"decrease_count\": 1\n      },\n      {\n        \"id\": \"e\",\n        \"decrease_count\": 1\n      }\n    ],\n    \"reversals\": [\n      {\n        \"at_budget_units\": \"26\",\n        \"contributors_losing\": [\n          {\n            \"id\": \"d\",\n            \"before_units\": \"3\",\n            \"after_units\": \"2\"\n          },\n          {\n            \"id\": \"e\",\n            \"before_units\": \"3\",\n            \"after_units\": \"2\"\n          }\n        ]\n      }\n    ],\n    \"scope\": \"every consecutive atomic-unit budget in this window; arithmetic only, no payment or entitlement\"\n  },\n  \"verification\": {\n    \"schema\": \"rewardwindow-verification-v1\",\n    \"result\": \"verified every atomic-unit transition in window\",\n    \"scan_sha256\": \"96dc20f6c84be1687918e94e7be48fbdd61b0455973ac703015b0cdc4a0434f8\",\n    \"transitions_with_reversal\": 1,\n    \"start_budget_units\": \"25\",\n    \"end_budget_units\": \"28\",\n    \"scope\": \"every consecutive atomic-unit budget in this window; arithmetic only, no payment or entitlement\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/uniquecheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.132s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/uniquecheck/uniquecheck.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 1,\n    \"review\": 1,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"unique_items_incompatible\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/clientTags25/uniqueItems\",\n      \"message\": \"New request uniqueness rule can reject arrays containing duplicate values.\"\n    },\n    {\n      \"severity\": \"review\",\n      \"code\": \"schema_constraint_changed\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/clientTags25/uniqueItems\",\n      \"message\": \"Constraint changed; this rule needs human review.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"uniquecheck-v1 (includes constcheck-v1, multiplecheck-v1, boundcheck-v1)\",\n  \"capture_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"demo\": \"Hypothetical uniqueness change in the captured public IMD description; no operation called.\",\n  \"illustrative_old_request\": {\n    \"clientTags25\": [\n      \"urgent\",\n      \"urgent\"\n    ]\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/workplan/workplan.py",
+      "--self-test"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "PASS: demo, deadline checks, invalid inputs, 150 seeded dependency graphs, determinism and resource constraints\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/workplan/workplan.py",
+      "--demo",
+      "--workers",
+      "2",
+      "--budget",
+      "25"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"workers\": 2,\n  \"method\": \"nonpreemptive list scheduling; longest downstream duration first; ties by id\",\n  \"schedule\": [\n    {\n      \"task\": \"read-brief\",\n      \"worker\": 1,\n      \"start\": 0,\n      \"finish\": 3\n    },\n    {\n      \"task\": \"implement\",\n      \"worker\": 1,\n      \"start\": 3,\n      \"finish\": 15\n    },\n    {\n      \"task\": \"prepare-fixtures\",\n      \"worker\": 2,\n      \"start\": 3,\n      \"finish\": 7\n    },\n    {\n      \"task\": \"verify\",\n      \"worker\": 1,\n      \"start\": 15,\n      \"finish\": 20\n    },\n    {\n      \"task\": \"write-handoff\",\n      \"worker\": 1,\n      \"start\": 20,\n      \"finish\": 22\n    }\n  ],\n  \"finish\": 22,\n  \"critical_path\": [\n    \"read-brief\",\n    \"implement\",\n    \"verify\",\n    \"write-handoff\"\n  ],\n  \"critical_path_minutes\": 22,\n  \"lower_bound\": 22,\n  \"budget\": 25.0,\n  \"fits_budget\": true,\n  \"deadline_verdict\": \"fits\",\n  \"slack\": 3.0\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/replan/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_300_progress_snapshots (__main__.ReplanTests.test_300_progress_snapshots) ... ok\ntest_complete_graph_still_validated (__main__.ReplanTests.test_complete_graph_still_validated) ... ok\ntest_delayed_demo (__main__.ReplanTests.test_delayed_demo) ... ok\ntest_done_all_and_expired_deadline (__main__.ReplanTests.test_done_all_and_expired_deadline) ... ok\ntest_file_and_cli_validation (__main__.ReplanTests.test_file_and_cli_validation) ... ok\ntest_heuristic_miss_is_not_proof (__main__.ReplanTests.test_heuristic_miss_is_not_proof) ... ok\ntest_inconsistent_progress (__main__.ReplanTests.test_inconsistent_progress) ... ok\ntest_input_not_mutated (__main__.ReplanTests.test_input_not_mutated) ... ok\ntest_margin_on_remaining_work_only (__main__.ReplanTests.test_margin_on_remaining_work_only) ... ok\ntest_no_progress_matches_predecessor (__main__.ReplanTests.test_no_progress_matches_predecessor) ... ok\ntest_repeated_active_and_worker (__main__.ReplanTests.test_repeated_active_and_worker) ... ok\ntest_running_workers_are_pinned (__main__.ReplanTests.test_running_workers_are_pinned) ... ok\ntest_simultaneous_completions_release_all_dependencies (__main__.ReplanTests.test_simultaneous_completions_release_all_dependencies) ... ok\ntest_timestamp_precision_rejected (__main__.ReplanTests.test_timestamp_precision_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.116s\n\nOK\n"
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/replan/replan.py",
+      "--demo",
+      "--workers",
+      "2",
+      "--budget",
+      "27"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"elapsed_minutes\": 9,\n  \"workers\": 2,\n  \"budget\": 27.0,\n  \"remaining_budget\": 18.0,\n  \"margin_percent\": 0,\n  \"completed\": [\n    \"prepare-fixtures\",\n    \"read-brief\"\n  ],\n  \"schedule\": [\n    {\n      \"task\": \"implement\",\n      \"worker\": 1,\n      \"start\": 9,\n      \"finish\": 19.0,\n      \"state\": \"running\",\n      \"remaining_minutes\": 10.0\n    },\n    {\n      \"task\": \"verify\",\n      \"worker\": 1,\n      \"start\": 19.0,\n      \"finish\": 24.0,\n      \"state\": \"pending\",\n      \"remaining_minutes\": 5.0\n    },\n    {\n      \"task\": \"write-handoff\",\n      \"worker\": 1,\n      \"start\": 24.0,\n      \"finish\": 26.0,\n      \"state\": \"pending\",\n      \"remaining_minutes\": 2.0\n    }\n  ],\n  \"finish\": 26.0,\n  \"remaining_minutes\": 17.0,\n  \"lower_bound_remaining\": 17.0,\n  \"earliest_possible_finish\": 26.0,\n  \"critical_path\": [\n    \"implement\",\n    \"verify\",\n    \"write-handoff\"\n  ],\n  \"fits_budget\": true,\n  \"deadline_verdict\": \"fits\",\n  \"slack\": 1.0,\n  \"method\": \"nonpreemptive longest downstream first; running tasks pinned to their workers\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/optplan/optplan.py",
+      "--self-test"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "PASS: optimum demos, intentional-idle regression, worker bound, integer/task limits\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/optplan/optplan.py",
+      "--demo",
+      "--workers",
+      "2"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"workers\": 2,\n  \"method\": \"exhaustive event search with intentional idle time\",\n  \"task_limit\": 14,\n  \"finish\": 11,\n  \"schedule\": [\n    {\n      \"task\": \"brief\",\n      \"worker\": 1,\n      \"start\": 0,\n      \"finish\": 2\n    },\n    {\n      \"task\": \"build-a\",\n      \"worker\": 1,\n      \"start\": 2,\n      \"finish\": 7\n    },\n    {\n      \"task\": \"build-b\",\n      \"worker\": 2,\n      \"start\": 2,\n      \"finish\": 6\n    },\n    {\n      \"task\": \"check\",\n      \"worker\": 1,\n      \"start\": 7,\n      \"finish\": 10\n    },\n    {\n      \"task\": \"handoff\",\n      \"worker\": 1,\n      \"start\": 10,\n      \"finish\": 11\n    }\n  ],\n  \"states_examined\": 8,\n  \"state_limit\": 100000,\n  \"proven_optimal\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/optplan/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_all_four_task_dags (__main__.OptplanTests.test_all_four_task_dags) ... ok\ntest_bounded_strict_json (__main__.OptplanTests.test_bounded_strict_json) ... ok\ntest_cli_success_and_limit_failure (__main__.OptplanTests.test_cli_success_and_limit_failure) ... ok\ntest_fourteen_task_chain (__main__.OptplanTests.test_fourteen_task_chain) ... ok\ntest_idle_regression (__main__.OptplanTests.test_idle_regression) ... ok\ntest_invalid_graphs (__main__.OptplanTests.test_invalid_graphs) ... ok\ntest_seeded_oracle (__main__.OptplanTests.test_seeded_oracle) ... ok\ntest_serial_and_unlimited_workers (__main__.OptplanTests.test_serial_and_unlimited_workers) ... ok\ntest_simultaneous_completions (__main__.OptplanTests.test_simultaneous_completions) ... ok\ntest_state_limit (__main__.OptplanTests.test_state_limit) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.083s\n\nOK\n"
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/optplan/optplan.py",
+      "--idle-demo",
+      "--workers",
+      "2"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"workers\": 2,\n  \"method\": \"exhaustive event search with intentional idle time\",\n  \"task_limit\": 14,\n  \"finish\": 16,\n  \"schedule\": [\n    {\n      \"task\": \"prepare\",\n      \"worker\": 1,\n      \"start\": 0,\n      \"finish\": 1\n    },\n    {\n      \"task\": \"build-a\",\n      \"worker\": 1,\n      \"start\": 1,\n      \"finish\": 8\n    },\n    {\n      \"task\": \"build-b\",\n      \"worker\": 2,\n      \"start\": 1,\n      \"finish\": 8\n    },\n    {\n      \"task\": \"background\",\n      \"worker\": 1,\n      \"start\": 8,\n      \"finish\": 14\n    },\n    {\n      \"task\": \"integrate\",\n      \"worker\": 2,\n      \"start\": 8,\n      \"finish\": 16\n    }\n  ],\n  \"states_examined\": 24,\n  \"state_limit\": 100000,\n  \"proven_optimal\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 1,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-1/tools/optplan/optplan.py",
+      "--input",
+      "line-1/tools/optplan/idle-example.json",
+      "--workers",
+      "2"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"units\": \"minutes\",\n  \"workers\": 2,\n  \"method\": \"exhaustive event search with intentional idle time\",\n  \"task_limit\": 14,\n  \"finish\": 16,\n  \"schedule\": [\n    {\n      \"task\": \"prepare\",\n      \"worker\": 1,\n      \"start\": 0,\n      \"finish\": 1\n    },\n    {\n      \"task\": \"build-a\",\n      \"worker\": 1,\n      \"start\": 1,\n      \"finish\": 8\n    },\n    {\n      \"task\": \"build-b\",\n      \"worker\": 2,\n      \"start\": 1,\n      \"finish\": 8\n    },\n    {\n      \"task\": \"background\",\n      \"worker\": 1,\n      \"start\": 8,\n      \"finish\": 14\n    },\n    {\n      \"task\": \"integrate\",\n      \"worker\": 2,\n      \"start\": 8,\n      \"finish\": 16\n    }\n  ],\n  \"states_examined\": 24,\n  \"state_limit\": 100000,\n  \"proven_optimal\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/safezip/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_actual_input_size_checked_after_stat (__main__.SafeZipTests.test_actual_input_size_checked_after_stat) ... ok\ntest_approval_cli (__main__.SafeZipTests.test_approval_cli) ... ok\ntest_approved_digest_does_not_bypass_payload_checks (__main__.SafeZipTests.test_approved_digest_does_not_bypass_payload_checks) ... ok\ntest_archive_digest_and_approved_extraction (__main__.SafeZipTests.test_archive_digest_and_approved_extraction) ... ok\ntest_budget_cli (__main__.SafeZipTests.test_budget_cli) ... ok\ntest_byte_and_entry_limits (__main__.SafeZipTests.test_byte_and_entry_limits) ... ok\ntest_cancel_before_publish_empty_archive (__main__.SafeZipTests.test_cancel_before_publish_empty_archive) ... ok\ntest_cancel_during_snapshot (__main__.SafeZipTests.test_cancel_during_snapshot) ... ok\ntest_cancel_in_inventory (__main__.SafeZipTests.test_cancel_in_inventory) ... ok\ntest_cancel_mid_payload_cleans_stage (__main__.SafeZipTests.test_cancel_mid_payload_cleans_stage) ... ok\ntest_cancellation_before_read (__main__.SafeZipTests.test_cancellation_before_read) ... ok\ntest_changed_archive_rejected_before_zip_parsing (__main__.SafeZipTests.test_changed_archive_rejected_before_zip_parsing) ... ok\ntest_cli (__main__.SafeZipTests.test_cli) ... ok\ntest_collisions (__main__.SafeZipTests.test_collisions) ... ok\ntest_corrupt_deflate_cli_cleans_stage (__main__.SafeZipTests.test_corrupt_deflate_cli_cleans_stage) ... ok\ntest_crc_failure_is_atomic (__main__.SafeZipTests.test_crc_failure_is_atomic) ... ok\ntest_deflate (__main__.SafeZipTests.test_deflate) ... ok\ntest_empty_archive_does_not_charge_stage_root (__main__.SafeZipTests.test_empty_archive_does_not_charge_stage_root) ... ok\ntest_empty_directories_and_zero_byte_files_count (__main__.SafeZipTests.test_empty_directories_and_zero_byte_files_count) ... ok\ntest_encrypted_flag (__main__.SafeZipTests.test_encrypted_flag) ... ok\ntest_exact_archive_limit (__main__.SafeZipTests.test_exact_archive_limit) ... ok\ntest_explicit_directory_after_implicit (__main__.SafeZipTests.test_explicit_directory_after_implicit) ... ok\ntest_explicit_parents_count_once_in_either_order (__main__.SafeZipTests.test_explicit_parents_count_once_in_either_order) ... ok\ntest_generous_budget_and_non_cancelled_roundtrip (__main__.SafeZipTests.test_generous_budget_and_non_cancelled_roundtrip) ... ok\ntest_implicit_parents_count_toward_node_limit (__main__.SafeZipTests.test_implicit_parents_count_toward_node_limit) ... ok\ntest_interruption_options_validate (__main__.SafeZipTests.test_interruption_options_validate) ... ok\ntest_invalid_digest (__main__.SafeZipTests.test_invalid_digest) ... ok\ntest_inventory_node_limit_validates_direct_calls (__main__.SafeZipTests.test_inventory_node_limit_validates_direct_calls) ... ok\ntest_max_depth_and_unicode_node_boundary (__main__.SafeZipTests.test_max_depth_and_unicode_node_boundary) ... ok\ntest_node_limit_independent_of_entry_limit (__main__.SafeZipTests.test_node_limit_independent_of_entry_limit) ... ok\ntest_node_limit_rejects_before_staging_or_payload_read (__main__.SafeZipTests.test_node_limit_rejects_before_staging_or_payload_read) ... ok\ntest_nodes_cli (__main__.SafeZipTests.test_nodes_cli) ... ok\ntest_output_no_clobber (__main__.SafeZipTests.test_output_no_clobber) ... ok\ntest_outside_workspace_refused_without_read (__main__.SafeZipTests.test_outside_workspace_refused_without_read) ... ok\ntest_paths (__main__.SafeZipTests.test_paths) ... ok\ntest_resource_limits_require_positive_integers_before_read (__main__.SafeZipTests.test_resource_limits_require_positive_integers_before_read) ... ok\ntest_roundtrip (__main__.SafeZipTests.test_roundtrip) ... ok\ntest_shared_parents_count_once (__main__.SafeZipTests.test_shared_parents_count_once) ... ok\ntest_snapshot_resists_path_replacement (__main__.SafeZipTests.test_snapshot_resists_path_replacement) ... ok\ntest_symlink_and_special_members (__main__.SafeZipTests.test_symlink_and_special_members) ... ok\ntest_symlink_paths_refused (__main__.SafeZipTests.test_symlink_paths_refused) ... ok\ntest_time_budget_before_read_and_after_staging (__main__.SafeZipTests.test_time_budget_before_read_and_after_staging) ... ok\ntest_truncated_archive (__main__.SafeZipTests.test_truncated_archive) ... ok\ntest_unsupported_compression (__main__.SafeZipTests.test_unsupported_compression) ... ok\n\n----------------------------------------------------------------------\nRan 44 tests in 0.426s\n\nOK\n"
+  },
+  {
+    "line": 2,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-2/tools/safezip/swarm_demo.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"ok\": true,\n  \"network_used\": false,\n  \"sample_source\": \"https://api.imd.fun/openapi.json\",\n  \"sample_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"sample_bytes\": 23132,\n  \"archive_sha256\": \"a19b6d49f1bad5d27b51696e8050555390f1a006fc3420c87d57c8782257c718\",\n  \"zip_entries\": 1,\n  \"filesystem_nodes_excluding_destination_root\": 3,\n  \"nodes_2\": \"filesystem node limit exceeded\",\n  \"nodes_3\": \"extracted; bytes match capture\",\n  \"failed_stage_removed\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardsplit/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_abi_metadata_decoding_and_malformed_data (__main__.RewardTests.test_abi_metadata_decoding_and_malformed_data) ... ok\ntest_budget_rejects_lossy_or_ambiguous_notation (__main__.RewardTests.test_budget_rejects_lossy_or_ambiguous_notation) ... ok\ntest_conservation_and_quota_for_300_seeded_cases (__main__.RewardTests.test_conservation_and_quota_for_300_seeded_cases) ... ok\ntest_decimal_weights_and_exact_rounding (__main__.RewardTests.test_decimal_weights_and_exact_rounding) ... ok\ntest_invalid_contributors (__main__.RewardTests.test_invalid_contributors) ... ok\ntest_json_duplicate_keys_and_nonfinite_numbers (__main__.RewardTests.test_json_duplicate_keys_and_nonfinite_numbers) ... ok\ntest_maximum_row_count (__main__.RewardTests.test_maximum_row_count) ... ok\ntest_no_external_input_paths (__main__.RewardTests.test_no_external_input_paths) ... ok\ntest_order_independent_ties (__main__.RewardTests.test_order_independent_ties) ... ok\ntest_real_zto_one_token_three_ways (__main__.RewardTests.test_real_zto_one_token_three_ways) ... ok\ntest_recipient_identity_is_optional_but_duplicates_fail (__main__.RewardTests.test_recipient_identity_is_optional_but_duplicates_fail) ... ok\ntest_reject_metadata_wrong_chain_or_precision (__main__.RewardTests.test_reject_metadata_wrong_chain_or_precision) ... ok\ntest_rpc_rejects_wrong_chain_and_reorg (__main__.RewardTests.test_rpc_rejects_wrong_chain_and_reorg) ... ok\ntest_uint256_boundary (__main__.RewardTests.test_uint256_boundary) ... ok\ntest_zero_weight_never_wins (__main__.RewardTests.test_zero_weight_never_wins) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.106s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardsplit/rewardsplit.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardsplit-allocation-v1\",\n  \"purpose\": \"allocation only; no transaction, balance check, or promise of payment\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"budget_units\": \"1000000000000000000\",\n  \"budget_amount\": \"1.000000000000000000\",\n  \"method\": \"largest remainder; equal remainders ordered by ASCII contributor id\",\n  \"rounding_units_distributed\": 1,\n  \"unallocated_units\": \"0\",\n  \"all_recipients_supplied\": false,\n  \"allocations\": [\n    {\n      \"id\": \"build\",\n      \"weight_fraction\": \"1\",\n      \"units\": \"333333333333333334\",\n      \"amount\": \"0.333333333333333334\",\n      \"rounding_unit_awarded\": true\n    },\n    {\n      \"id\": \"research\",\n      \"weight_fraction\": \"1\",\n      \"units\": \"333333333333333333\",\n      \"amount\": \"0.333333333333333333\",\n      \"rounding_unit_awarded\": false\n    },\n    {\n      \"id\": \"review\",\n      \"weight_fraction\": \"1\",\n      \"units\": \"333333333333333333\",\n      \"amount\": \"0.333333333333333333\",\n      \"rounding_unit_awarded\": false\n    }\n  ],\n  \"demo\": \"Illustrative task roles, not recipient identities; no addresses or payments.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardreceipt/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_added_claim_rejected (__main__.ReceiptTests.test_added_claim_rejected) ... ok\ntest_canonical_hash_independent_of_key_order (__main__.ReceiptTests.test_canonical_hash_independent_of_key_order) ... ok\ntest_changed_token_capture_rejected (__main__.ReceiptTests.test_changed_token_capture_rejected) ... ok\ntest_changed_unit_rejected (__main__.ReceiptTests.test_changed_unit_rejected) ... ok\ntest_changed_weights_rejected (__main__.ReceiptTests.test_changed_weights_rejected) ... ok\ntest_duplicate_json_keys_rejected_by_reader (__main__.ReceiptTests.test_duplicate_json_keys_rejected_by_reader) ... ok\ntest_exact_zto_receipt (__main__.ReceiptTests.test_exact_zto_receipt) ... ok\ntest_numeric_type_substitution_rejected (__main__.ReceiptTests.test_numeric_type_substitution_rejected) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.001s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardreceipt/rewardreceipt.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardreceipt-v1\",\n  \"result\": \"verified exact RewardSplit allocation\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"budget_units\": \"1000000000000000000\",\n  \"contributors\": 3,\n  \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n  \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n  \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n  \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardcompare/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "test_250_seeded_conservation_and_reverse (__main__.CompareTests.test_250_seeded_conservation_and_reverse) ... ok\ntest_added_payment_claim_rejected (__main__.CompareTests.test_added_payment_claim_rejected) ... ok\ntest_both_reports_verified (__main__.CompareTests.test_both_reports_verified) ... ok\ntest_capture_change_rejected (__main__.CompareTests.test_capture_change_rejected) ... ok\ntest_changed_roster_or_weights_rejected (__main__.CompareTests.test_changed_roster_or_weights_rejected) ... ok\ntest_demo_cli_review_exit (__main__.CompareTests.test_demo_cli_review_exit) ... ok\ntest_equivalent_weight_notation (__main__.CompareTests.test_equivalent_weight_notation) ... ok\ntest_known_budget_paradox (__main__.CompareTests.test_known_budget_paradox) ... ok\ntest_same_budget_and_permutation (__main__.CompareTests.test_same_budget_and_permutation) ... ok\ntest_uint256_precision (__main__.CompareTests.test_uint256_precision) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.184s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardcompare/rewardcompare.py",
+      "demo"
+    ],
+    "expected_exit": 1,
+    "exit": 1,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"rewardcompare-v1\",\n  \"token\": {\n    \"chain_id\": 1,\n    \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n    \"symbol\": \"ZTO\",\n    \"decimals\": 18,\n    \"block_number\": 26205319,\n    \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n  },\n  \"before_budget_units\": \"25\",\n  \"after_budget_units\": \"26\",\n  \"budget_delta_units\": \"1\",\n  \"allocation_delta_sum_units\": \"1\",\n  \"contributors_losing_units\": [\n    \"d\",\n    \"e\"\n  ],\n  \"contributors_gaining_units\": [\n    \"a\",\n    \"b\",\n    \"c\"\n  ],\n  \"contributors_moving_against_budget\": [\n    \"d\",\n    \"e\"\n  ],\n  \"review_required\": true,\n  \"allocations\": [\n    {\n      \"id\": \"a\",\n      \"before_units\": \"7\",\n      \"after_units\": \"8\",\n      \"delta_units\": \"1\"\n    },\n    {\n      \"id\": \"b\",\n      \"before_units\": \"7\",\n      \"after_units\": \"8\",\n      \"delta_units\": \"1\"\n    },\n    {\n      \"id\": \"c\",\n      \"before_units\": \"4\",\n      \"after_units\": \"5\",\n      \"delta_units\": \"1\"\n    },\n    {\n      \"id\": \"d\",\n      \"before_units\": \"3\",\n      \"after_units\": \"2\",\n      \"delta_units\": \"-1\"\n    },\n    {\n      \"id\": \"e\",\n      \"before_units\": \"3\",\n      \"after_units\": \"2\",\n      \"delta_units\": \"-1\"\n    },\n    {\n      \"id\": \"f\",\n      \"before_units\": \"1\",\n      \"after_units\": \"1\",\n      \"delta_units\": \"0\"\n    }\n  ],\n  \"before_receipt\": {\n    \"schema\": \"rewardreceipt-v1\",\n    \"result\": \"verified exact RewardSplit allocation\",\n    \"token\": {\n      \"chain_id\": 1,\n      \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n      \"symbol\": \"ZTO\",\n      \"decimals\": 18,\n      \"block_number\": 26205319,\n      \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n    },\n    \"budget_units\": \"25\",\n    \"contributors\": 6,\n    \"request_sha256\": \"0c8aaeecd1ebc73700380f21cd783f2e7c72f3b9801c48d560e993492e975544\",\n    \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n    \"report_sha256\": \"242019588cdecea60c482eca654f3531b63fe37dcb6826fd2f9f29202906974d\",\n    \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n  },\n  \"after_receipt\": {\n    \"schema\": \"rewardreceipt-v1\",\n    \"result\": \"verified exact RewardSplit allocation\",\n    \"token\": {\n      \"chain_id\": 1,\n      \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n      \"symbol\": \"ZTO\",\n      \"decimals\": 18,\n      \"block_number\": 26205319,\n      \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n    },\n    \"budget_units\": \"26\",\n    \"contributors\": 6,\n    \"request_sha256\": \"132b9ff115d89dcc5f2be92951ca77ffb758015fa141404dd687443719555c9b\",\n    \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n    \"report_sha256\": \"8cb645f390d0ac76494ffbfc1609b87200498bcfdaf980b22fbce7480197cb5d\",\n    \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n  },\n  \"scope\": \"comparison of two complete allocations, not incremental payments or entitlement; no balance, identity, work or payment verified\",\n  \"warning\": \"largest remainder is not budget-monotonic; review decreases before replacing an allocation\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardbatch/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.321s\n\nOK\n"
+  },
+  {
+    "line": 3,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-3/tools/rewardbatch/rewardbatch.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"demo\": \"Included illustrative roles; real captured ZTO metadata; no payees or payments\",\n  \"bundle\": {\n    \"schema\": \"rewardbatch-v1\",\n    \"scope\": \"offline review batches only; no transaction, payment, entitlement or authorization\",\n    \"receipt\": {\n      \"schema\": \"rewardreceipt-v1\",\n      \"result\": \"verified exact RewardSplit allocation\",\n      \"token\": {\n        \"chain_id\": 1,\n        \"address\": \"0xd782bdea4ef02a0bd391eb9089470c8080f0a68e\",\n        \"symbol\": \"ZTO\",\n        \"decimals\": 18,\n        \"block_number\": 26205319,\n        \"block_hash\": \"0xa4d2f8165b2b090fe930545d71b952c06e02401f56a892caf8d6f7a8a47d8a9a\"\n      },\n      \"budget_units\": \"1000000000000000000\",\n      \"contributors\": 3,\n      \"request_sha256\": \"2aab721988a38569c3ebc8a3beb62fe287fa4abde5e657d33022430c2f6d6314\",\n      \"metadata_sha256\": \"26804407dd1eb430871bd2b218a59974835e3fe5020829a7c8c1f25ff41465ec\",\n      \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n      \"scope\": \"offline arithmetic and input agreement only; no work, identity, balance, signature, or payment verified\"\n    },\n    \"batch_size\": 2,\n    \"batch_count\": 2,\n    \"contributor_count\": 3,\n    \"budget_units\": \"1000000000000000000\",\n    \"batched_units\": \"1000000000000000000\",\n    \"allocation_rows_sha256\": \"ce5d77ea4d5d82b3cb6e7b9fc399fd3a56780d40bcc6029db1459899a54e6310\",\n    \"order\": \"ASCII contributor id; zero allocations retained; no recipient inferred\",\n    \"batches\": [\n      {\n        \"number\": 1,\n        \"start_row\": 0,\n        \"row_count\": 2,\n        \"units\": \"666666666666666667\",\n        \"rows_sha256\": \"fe83e36a880da4fa1390988f5f74058477ba5ae75c0157a682b60cd6f88499f0\",\n        \"allocations\": [\n          {\n            \"amount\": \"0.333333333333333334\",\n            \"id\": \"build\",\n            \"rounding_unit_awarded\": true,\n            \"units\": \"333333333333333334\",\n            \"weight_fraction\": \"1\"\n          },\n          {\n            \"amount\": \"0.333333333333333333\",\n            \"id\": \"research\",\n            \"rounding_unit_awarded\": false,\n            \"units\": \"333333333333333333\",\n            \"weight_fraction\": \"1\"\n          }\n        ]\n      },\n      {\n        \"number\": 2,\n        \"start_row\": 2,\n        \"row_count\": 1,\n        \"units\": \"333333333333333333\",\n        \"rows_sha256\": \"b4221e9e64b876b6b1fa14b56286abaa391466d5b0b6aba079c8989a20302f73\",\n        \"allocations\": [\n          {\n            \"amount\": \"0.333333333333333333\",\n            \"id\": \"review\",\n            \"rounding_unit_awarded\": false,\n            \"units\": \"333333333333333333\",\n            \"weight_fraction\": \"1\"\n          }\n        ]\n      }\n    ]\n  },\n  \"verification\": {\n    \"schema\": \"rewardbatch-verification-v1\",\n    \"result\": \"verified complete exact partition\",\n    \"bundle_sha256\": \"c7fc118104a2e18ad7df6e485e005feab9f0b9f700e151018a3d29716133cede\",\n    \"report_sha256\": \"b6a779dc9458a76fe457f9f3d8c4f5aeb1644f168dc5f5f11c8c118bc431ae9a\",\n    \"batch_count\": 2,\n    \"contributor_count\": 3,\n    \"budget_units\": \"1000000000000000000\",\n    \"batched_units\": \"1000000000000000000\",\n    \"scope\": \"offline review batches only; no transaction, payment, entitlement or authorization\"\n  }\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/constcheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.106s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/constcheck/constcheck.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 1,\n    \"review\": 1,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"const_incompatible\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/clientMode24/const\",\n      \"message\": \"New request const excludes a formerly allowed value.\"\n    },\n    {\n      \"severity\": \"review\",\n      \"code\": \"schema_constraint_changed\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/clientMode24/const\",\n      \"message\": \"Constraint changed; this rule needs human review.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"constcheck-v1 (includes multiplecheck-v1 and boundcheck-v1)\",\n  \"capture_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"demo\": \"Hypothetical fixed clientMode24 change in the captured public IMD API. No operation called.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/apidelta/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "............................................\n----------------------------------------------------------------------\nRan 44 tests in 0.136s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/apidelta/apidelta.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 2,\n    \"review\": 0,\n    \"info\": 0\n  },\n  \"operations_compared\": 4,\n  \"findings\": [\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"operation_removed\",\n      \"location\": \"/paths/~1requests~1capabilities/get\",\n      \"message\": \"Existing operation is no longer described.\"\n    },\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"request_property_required\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/required/clientVersion\",\n      \"message\": \"New request property is mandatory.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"demo\": \"Synthetic breaking revision of a real captured public description; not an observed service change.\",\n  \"baseline_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"baseline_source\": \"https://api.imd.fun/openapi.json\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/boundcheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.095s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/boundcheck/boundcheck.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 1,\n    \"review\": 1,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"size_bound_incompatible\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/clientNote/maxLength\",\n      \"message\": \"Request size bound tightened.\"\n    },\n    {\n      \"severity\": \"review\",\n      \"code\": \"schema_constraint_changed\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/clientNote/maxLength\",\n      \"message\": \"Constraint changed; this rule needs human review.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"boundcheck-v1\",\n  \"demo\": \"Hypothetical clientNote bound change in a captured real public API; no service operation called.\",\n  \"capture_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/multiplecheck/selftest.py"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "",
+    "stderr": "................\n----------------------------------------------------------------------\nRan 16 tests in 0.674s\n\nOK\n"
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/multiplecheck/multiplecheck.py",
+      "demo"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"breaking\",\n  \"counts\": {\n    \"breaking\": 1,\n    \"review\": 1,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [\n    {\n      \"severity\": \"breaking\",\n      \"code\": \"multiple_of_incompatible\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/batchSize/multipleOf\",\n      \"message\": \"New request multiple excludes formerly accepted numeric values.\"\n    },\n    {\n      \"severity\": \"review\",\n      \"code\": \"schema_constraint_changed\",\n      \"location\": \"/paths/~1requests~1quote/post/requestBody/content/application~1json/schema/properties/batchSize/multipleOf\",\n      \"message\": \"Constraint changed; this rule needs human review.\"\n    }\n  ],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"multiplecheck-v1 (includes boundcheck-v1)\",\n  \"capture_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"demo\": \"Hypothetical batchSize change in the captured public IMD API. A formerly valid value 2 is rejected by the new multiple 3. No operation called.\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "line": 4,
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "test/scratch/gathering27/line-4/tools/multiplecheck/multiplecheck.py",
+      "compare",
+      "line-4/tools/apidelta/imd-openapi.json",
+      "line-4/tools/apidelta/imd-openapi.json"
+    ],
+    "expected_exit": 0,
+    "exit": 0,
+    "passed": true,
+    "stdout": "{\n  \"schema\": \"apidelta-report-v1\",\n  \"perspective\": \"existing clients upgrading to the new description\",\n  \"status\": \"no_detected_breakage\",\n  \"counts\": {\n    \"breaking\": 0,\n    \"review\": 0,\n    \"info\": 0\n  },\n  \"operations_compared\": 5,\n  \"findings\": [],\n  \"limits\": \"Static conservative subset analysis, not a full OpenAPI validator or proof of runtime compatibility. Review findings are unresolved.\",\n  \"extension\": \"multiplecheck-v1 (includes boundcheck-v1)\",\n  \"old_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"new_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n}\n",
+    "stderr": ""
+  }
+]

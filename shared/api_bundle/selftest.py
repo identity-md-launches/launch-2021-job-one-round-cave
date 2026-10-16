@@ -15,6 +15,109 @@ import api_bundle as bundle
 
 
 class BundleTests(unittest.TestCase):
+    def auth_doc(self, policy):
+        doc = copy.deepcopy(self.doc)
+        doc['components'] = {'securitySchemes': {
+            'a': {'type': 'http', 'scheme': 'bearer'},
+            'b': {'type': 'oauth2', 'flows': {}}}}
+        doc['security'] = policy
+        return doc
+
+    def test_auth_public_capture_through_approved_bundles(self):
+        old = json.loads(Path(__file__).with_name('imd-openapi.json').read_bytes())
+        new = copy.deepcopy(old)
+        del new['paths']['/requests/capabilities']['get']['security']
+        a, b = self.archive('a.zip', old), self.archive('b.zip', new)
+        before = {p.name: p.read_bytes() for p in self.root.iterdir()}
+        report = bundle.compare(a, b, old_sha256=hashlib.sha256(a.read_bytes()).hexdigest(),
+                                new_sha256=hashlib.sha256(b.read_bytes()).hexdigest())
+        self.assertEqual(report['counts'], {'breaking': 1, 'review': 1, 'info': 0})
+        self.assertIn('security_requirement_incompatible', [f['code'] for f in report['findings']])
+        self.assertEqual(report['operations_compared'], 5)
+        self.assertEqual(before, {p.name: p.read_bytes() for p in self.root.iterdir()})
+
+    def test_auth_alternatives_scope_and_direction(self):
+        for old, new in [([{'a': []}, {'b': []}], [{'a': [], 'b': []}]),
+                         ([{'b': ['read']}], [{'b': ['read', 'write']}]),
+                         ([], [{'a': []}])]:
+            a, b = self.archive('a.zip', self.auth_doc(old)), self.archive('b.zip', self.auth_doc(new))
+            self.assertEqual(bundle.compare(a, b)['status'], 'breaking')
+            self.assertEqual(bundle.compare(b, a)['status'], 'review_required')
+
+    def test_auth_override_and_malformed_same_document(self):
+        old = self.auth_doc([{'a': []}])
+        new = self.auth_doc([{'a': [], 'b': []}])
+        for doc in (old, new):
+            doc['paths']['/items']['get']['security'] = []
+        a, b = self.archive('a.zip', old), self.archive('b.zip', new)
+        self.assertEqual(bundle.compare(a, b)['counts']['breaking'], 0)
+        bad = self.archive('bad.zip', self.auth_doc([{'unknown': []}]))
+        with self.assertRaisesRegex(ValueError, 'undeclared'):
+            bundle.compare(bad, bad)
+
+    def test_auth_cli_outcomes_and_limits(self):
+        a = self.archive('a.zip', self.auth_doc([]))
+        for policy, code in [([], 0), ([{'a': []}], 1), ([{}], 3),
+                              ([{'a': 'not-an-array'}], 2), ([{}]*65, 2)]:
+            b = self.archive('b.zip', self.auth_doc(policy))
+            run = subprocess.run([sys.executable, '-B', bundle.__file__, str(a), str(b)],
+                                 capture_output=True, text=True, timeout=10)
+            self.assertEqual(run.returncode, code, run.stdout + run.stderr)
+
+    def test_directory_budget_before_parser_and_exact_boundary(self):
+        a = self.root / 'comment.zip'
+        info = zipfile.ZipInfo('openapi.json')
+        info.comment = b'x' * 60000
+        with zipfile.ZipFile(a, 'w') as archive:
+            archive.writestr(info, json.dumps(self.doc))
+        size = 46 + len(info.filename) + len(info.comment)
+        with mock.patch.object(bundle.zipfile, 'ZipFile') as parser:
+            with self.assertRaisesRegex(ValueError, 'directory byte limit'):
+                bundle.read_bundle(a, directory_bytes=size-1)
+            parser.assert_not_called()
+        _, inventory = bundle.read_bundle(a, directory_bytes=size)
+        self.assertEqual(inventory['preflight']['directory_bytes'], size)
+        self.assertEqual(inventory['preflight']['entries'], 1)
+
+    def test_directory_count_before_parser(self):
+        a = self.root / 'many.zip'
+        with zipfile.ZipFile(a, 'w') as archive:
+            for n in range(1001):
+                archive.writestr(str(n), b'')
+        with mock.patch.object(bundle.zipfile, 'ZipFile') as parser:
+            with self.assertRaisesRegex(ValueError, 'entry limit'):
+                bundle.read_bundle(a)
+            parser.assert_not_called()
+
+    def test_directory_refuses_trailing_bytes_and_false_count(self):
+        import struct
+        a = self.archive('a.zip')
+        raw = a.read_bytes()
+        for changed in (raw + b'junk', raw[:-14] + struct.pack('<H', 0) + raw[-12:]):
+            a.write_bytes(changed)
+            with mock.patch.object(bundle.zipfile, 'ZipFile') as parser:
+                with self.assertRaises(ValueError):
+                    bundle.read_bundle(a)
+                parser.assert_not_called()
+
+    def test_invalid_directory_budget_before_io(self):
+        for value in (True, False, None, 0, -1, 1.5, '2'):
+            with mock.patch.object(Path, 'open') as opened:
+                with self.assertRaisesRegex(ValueError, 'positive integer'):
+                    bundle.compare('absent.zip', 'absent.zip', directory_bytes=value)
+                opened.assert_not_called()
+
+    def test_directory_budget_applies_to_second_archive_cli(self):
+        a = self.archive('a.zip')
+        b = self.root / 'b.zip'
+        info = zipfile.ZipInfo('openapi.json'); info.comment = b'x'*1000
+        with zipfile.ZipFile(b, 'w') as archive:
+            archive.writestr(info, json.dumps(self.doc))
+        run = subprocess.run([sys.executable, '-B', bundle.__file__, str(a), str(b),
+                              '--directory-bytes', '100'], capture_output=True, text=True, timeout=10)
+        self.assertEqual(run.returncode, 2)
+        self.assertIn('directory byte limit', json.loads(run.stdout)['error'])
+
     def dependency_doc(self, rules=None, response=False, version='3.1.0'):
         doc = copy.deepcopy(self.doc)
         doc['openapi'] = version
@@ -263,7 +366,7 @@ class BundleTests(unittest.TestCase):
         proposed['paths']['/requests/quote']['post']['requestBody']['content']['application/json']['schema']['properties']['clientNote']['maxLength'] = 80
         old, new = self.archive('old.zip', baseline), self.archive('new.zip', proposed)
         report = bundle.compare(old, new)
-        self.assertEqual(report['extension'], 'dependcheck-v1 (includes uniquecheck, constcheck, multiplecheck, boundcheck)')
+        self.assertEqual(report['extension'], 'authcheck-v1 (includes dependcheck and all earlier line 4 analyzers)')
         self.assertEqual(report['counts']['breaking'], 1)
         self.assertEqual(report['counts']['review'], 1)
         self.assertIn('size_bound_incompatible', [f['code'] for f in report['findings']])
