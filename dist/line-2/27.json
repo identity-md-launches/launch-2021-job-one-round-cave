@@ -1,0 +1,30 @@
+{
+  "name": "The First Sieve",
+  "image": "https://api.imd.fun/artifacts/2f074c996327f5962f359e087ca2beba2f6d3c5bbb04a98f7d099ae75676163d",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 2"
+    },
+    {
+      "trait_type": "Number",
+      "value": 27
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "ZipGate"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "A woven sieve catches heavy stones before the basket is opened."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Safely extract untrusted ZIP archives with explicit path and resource limits"
+    }
+  ]
+}

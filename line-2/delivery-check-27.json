@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "goal_byte_identical": true,
+  "old_records_unchanged": 26,
+  "new_record": 27,
+  "named_output_untracked": true,
+  "new_files_within_scope": true,
+  "new_files_under_100KB": true,
+  "isolated_offline_checks": [
+    {
+      "command": "python3 -B line-2/tools/zipgate/demo.py",
+      "exit": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"network_used\": false,\n  \"source\": \"https://api.imd.fun/openapi.json\",\n  \"source_bytes\": 23132,\n  \"source_sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\",\n  \"large_directory_refused\": \"directory byte limit exceeded before ZIP parsing\",\n  \"extracted_bytes_identical\": true,\n  \"report\": {\n    \"ok\": true,\n    \"mode\": \"extract\",\n    \"entries\": [\n      {\n        \"path\": \"docs/imd/openapi.json\",\n        \"kind\": \"file\",\n        \"bytes\": 23132,\n        \"sha256\": \"be142840c010710cb2a5b9e5c73e71d8e79ec4054c15661699d60bfa627be96a\"\n      }\n    ],\n    \"total_bytes\": 23132,\n    \"content_checked\": true,\n    \"archive_sha256\": \"a19b6d49f1bad5d27b51696e8050555390f1a006fc3420c87d57c8782257c718\",\n    \"preflight\": {\n      \"entries\": 1,\n      \"directory_bytes\": 67,\n      \"zip64\": false\n    }\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python3 -B line-2/tools/zipgate/selftest.py",
+      "exit": 0,
+      "stdout": "",
+      "stderr": "test_ambiguous_comment_refused (__main__.GateTests.test_ambiguous_comment_refused) ... ok\ntest_archive_byte_boundary (__main__.GateTests.test_archive_byte_boundary) ... ok\ntest_bad_local_offset (__main__.GateTests.test_bad_local_offset) ... ok\ntest_cancellation_and_deadline (__main__.GateTests.test_cancellation_and_deadline) ... ok\ntest_cli (__main__.GateTests.test_cli) ... ok\ntest_comments_and_unknown_extra (__main__.GateTests.test_comments_and_unknown_extra) ... ok\ntest_content_corruption_still_checked (__main__.GateTests.test_content_corruption_still_checked) ... ok\ntest_declared_entry_limit (__main__.GateTests.test_declared_entry_limit) ... ok\ntest_digest_rejected_before_parser (__main__.GateTests.test_digest_rejected_before_parser) ... ok\ntest_directory_offset_and_size (__main__.GateTests.test_directory_offset_and_size) ... ok\ntest_directory_signature (__main__.GateTests.test_directory_signature) ... ok\ntest_directory_variable_fields (__main__.GateTests.test_directory_variable_fields) ... ok\ntest_empty_archive (__main__.GateTests.test_empty_archive) ... ok\ntest_exact_directory_boundary (__main__.GateTests.test_exact_directory_boundary) ... ok\ntest_invalid_limits (__main__.GateTests.test_invalid_limits) ... ok\ntest_malformed_extra (__main__.GateTests.test_malformed_extra) ... ok\ntest_multidisk (__main__.GateTests.test_multidisk) ... ok\ntest_path_rejection_still_checked (__main__.GateTests.test_path_rejection_still_checked) ... ok\ntest_replacement_cannot_bypass_gate (__main__.GateTests.test_replacement_cannot_bypass_gate) ... ok\ntest_seeded_many_valid_layouts (__main__.GateTests.test_seeded_many_valid_layouts) ... ok\ntest_sfx_prefix (__main__.GateTests.test_sfx_prefix) ... ok\ntest_spoofed_count_high (__main__.GateTests.test_spoofed_count_high) ... ok\ntest_spoofed_count_low (__main__.GateTests.test_spoofed_count_low) ... ok\ntest_stored_and_deflated_extract (__main__.GateTests.test_stored_and_deflated_extract) ... ok\ntest_trailing_bytes (__main__.GateTests.test_trailing_bytes) ... ok\ntest_truncation_every_offset (__main__.GateTests.test_truncation_every_offset) ... ok\ntest_zip64_locator_hidden_in_member_comment (__main__.GateTests.test_zip64_locator_hidden_in_member_comment) ... ok\ntest_zip64_markers (__main__.GateTests.test_zip64_markers) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 0.369s\n\nOK\n"
+    }
+  ],
+  "suite_totals": {
+    "zipgate": 28,
+    "safezip": 44,
+    "zipaudit": 16,
+    "zipdiff": 16
+  },
+  "all_104_tests_passed": true
+}

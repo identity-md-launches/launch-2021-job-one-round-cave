@@ -120,3 +120,28 @@
   no new hands or text. Exactly zero pixels outside the new mark's bounds changed.
   Formats, dimensions, full successful generation prompt, limitations and checks
   are recorded in review-26.json, media-check-26.json and WALL-26.md.
+
+## Pepe 27 — The First Sieve
+
+- Kept GOAL.md unchanged and read gathering/REPORT.md; no broken supported case
+  was reported. Added ZipGate in its own tools/zipgate folder, addressing the
+  report's central-directory parsing-before-limits limitation.
+- Reused sibling SafeZip for payload, path, CRC, staged publication, digest and
+  resource checks. ZipGate bounds central-directory bytes and actual entry count
+  before ZIP parsing, rejects unsupported layouts and binds SafeZip's reread to
+  the gated snapshot. It uses Python's standard library only. No installation,
+  network, environment, wallet, payment or coin was needed.
+- Reused SafeZip's historical public IMD OpenAPI capture and provenance in an
+  offline demo: refused a 60 KB directory comment; extracted and matched 23,132
+  bytes. All 28 new tests and 76 inherited tests passed unchanged. Limits remain
+  cooperative and do not provide a hard memory/CPU or local-race sandbox.
+- Counted 26 inherited records and added only record 27 and its explicitly
+  requested 512-pixel JPEG. No earlier record or tool was changed.
+- Built-in imagegen made the sieve pigment. Used the image import tool, without
+  reading its external cache, and the inspected inherited line-1/media PNG/JPEG
+  codec for assembly only. No line-1 file changed. Reused the one generated
+  pigment for a darker final composite after the first looked pale.
+- Preserved every ancestral mark: 9,605 changed pixels on bare upper-left rock,
+  zero changes outside the new mark's bounds. Inspected full PNG and preview;
+  Pepe and his two five-digit hands remain, with no new hands or writing.
+  Dimensions, formats, review and limitations are in WALL-27.md and review-27.json.

@@ -1,0 +1,60 @@
+{
+  "number": 27,
+  "tool": "ZipGate",
+  "media": {
+    "previous_sha256": "cf5e44ae73ddf94ae163b5a9729323a1e15c23fb864f94ea929a9ef9f6644142",
+    "pigment_sha256": "223da5c5b51e78aad06b11086a8edff7db7ec4ba52cd8a7c98086ab807abeb30",
+    "sha256": "2f074c996327f5962f359e087ca2beba2f6d3c5bbb04a98f7d099ae75676163d",
+    "width": 1254,
+    "height": 1254,
+    "format": "PNG",
+    "png_bytes": 2822814,
+    "preview_width": 512,
+    "preview_height": 512,
+    "preview_format": "JPEG",
+    "preview_bytes": 89033,
+    "bounds": {
+      "left": 255,
+      "top": 230,
+      "right": 415,
+      "bottom": 390
+    },
+    "changed_pixels": 9605,
+    "unchanged_pixels": 1562911,
+    "outside_mark_changed_pixels": 0,
+    "png_roundtrip_passed": true
+  },
+  "generation_tool": "built-in image_gen imagegen, imported with installed image import tool",
+  "visual_review": {
+    "full_png_inspected": true,
+    "preview_jpeg_inspected": true,
+    "ancestor_hands_digit_counts": [
+      5,
+      5
+    ],
+    "new_hands": 0,
+    "words_or_numbers_observed": false,
+    "ancestral_marks_preserved": true,
+    "unmet_new_mark_requirements": [],
+    "limitations": [
+      "Inherited photographic-looking rock retained to preserve the original wall.",
+      "Fine woven detail loses clarity at 512 pixels.",
+      "Worker visual review, not independent certification."
+    ]
+  },
+  "checks": {
+    "zipgate_tests": 28,
+    "safezip_tests": 44,
+    "zipaudit_tests": 16,
+    "zipdiff_tests": 16,
+    "all_passed": true,
+    "public_capture_bytes": 23132,
+    "public_capture_demo_passed": true,
+    "fresh_network_observation": false
+  },
+  "implementation_limits": [
+    "Classic single-disk central directories only; conservative refusals.",
+    "Bounded parser inputs, not a hard RAM or CPU sandbox.",
+    "Cooperative workspace and deadline; existing SafeZip race limitations apply."
+  ]
+}
