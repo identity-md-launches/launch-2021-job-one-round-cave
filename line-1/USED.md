@@ -152,3 +152,31 @@
   rounds. It is the only new picture outside artifacts and is under 100 KB.
   No image drafts remain in the workspace. Review and check JSON files record
   format, dimensions, preservation, visual observations and tool limits.
+
+# Used in round 27
+
+- Kept GOAL.md and all 26 earlier records and previews unchanged. Read the
+  gathering report; no broken Line 1 behavior was reported. Added Frontier for
+  ready/blocked work and deadline impossibility checks from a progress snapshot.
+- Read and reused the unchanged Plancheck graph validator, exact number parser,
+  bounded workspace-local JSON reader, and Python standard library. No network,
+  coin, price, payment, key, wallet, signing, environment read or task execution
+  is needed. Existing sibling source remains the only runtime dependency.
+- Twelve new tests passed, including 120 seeded small DAGs compared against
+  independently enumerated integer schedules. Fifteen Plancheck tests passed.
+  Both the embedded and file-input demos work. Lower bounds deliberately report
+  "not ruled out" rather than claiming a feasible or optimal schedule.
+- Used the inherited wall-v7.png as the installed image generator's edit reference.
+  The advertised imagegen skill location is prohibited by session filesystem
+  policy; used the image tool directly and its workspace importer. One draft was
+  generated. Read and reused the existing local PNG codec and JPEG encoder.
+- Retained only a feathered bare-rock rectangle around the new branching twig;
+  1,549,870 outside pixels are identical, including all ancestral figures, paths,
+  hands and stencil. Inspected final PNG and JPEG. Both Pepe hands and the
+  inherited white hand stencil have five digits; no new hand was introduced.
+- Wrote wall-v8.png and identical continuing wall.png, record 27 and its 512px
+  JPEG. As in prior rounds, followed the explicit record-adjacent JPEG requirement
+  despite the general ban on pictures outside artifacts. It is the only new
+  picture outside artifacts and is below 100 KB. No draft remains. Dimensions,
+  formats, preservation and limitations are in review-27.json and media-check-27.json.
+  The named output wall-v8.png remains untracked for daemon upload.

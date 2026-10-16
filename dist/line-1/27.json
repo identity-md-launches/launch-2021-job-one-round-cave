@@ -1,0 +1,30 @@
+{
+  "name": "The Ready Branches",
+  "image": "https://api.imd.fun/artifacts/5814021b6baba851fddf5108e85bf8220ee2244c7b98b193ea0922b4316e4baa",
+  "attributes": [
+    {
+      "trait_type": "Cave",
+      "value": "Lava"
+    },
+    {
+      "trait_type": "Wall",
+      "value": "Line 1"
+    },
+    {
+      "trait_type": "Number",
+      "value": 27
+    },
+    {
+      "trait_type": "Left behind",
+      "value": "Frontier"
+    },
+    {
+      "trait_type": "Meaning",
+      "value": "Three budding branches show the work that is ready to begin."
+    },
+    {
+      "trait_type": "One thing",
+      "value": "Offline dependency work planning"
+    }
+  ]
+}

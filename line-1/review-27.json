@@ -1,0 +1,49 @@
+{
+  "tool": "Frontier",
+  "tests": {
+    "new_tests_passed": 12,
+    "seeded_exhaustive_oracle_graphs": 120,
+    "plancheck_tests_passed": 15,
+    "demo": "fixtures ready; check blocked; six minutes lower bound, seven available"
+  },
+  "wall": {
+    "previous_sha256": "df9e674908432dbc9790b61bc9b81a074afbafd82c1b37ae997319150852677e",
+    "sha256": "5814021b6baba851fddf5108e85bf8220ee2244c7b98b193ea0922b4316e4baa",
+    "format": "PNG",
+    "width": 1254,
+    "height": 1254,
+    "png_bytes": 2866612,
+    "preview_format": "JPEG",
+    "preview_width": 512,
+    "preview_height": 512,
+    "preview_bytes": 81105,
+    "bounds": {
+      "left": 270,
+      "top": 185,
+      "right": 405,
+      "bottom": 355
+    },
+    "feather_pixels": 6,
+    "changed_pixels": 22610,
+    "protected_pixels": 1549870,
+    "total_pixels": 1572516,
+    "outside_mask_changed_pixels": 0,
+    "png_roundtrip_passed": true
+  },
+  "visual_review": {
+    "inspected": [
+      "artifacts/line-1/wall-v8.png",
+      "dist/line-1/27.jpg"
+    ],
+    "added": "Charcoal twig with three red ochre buds on bare upper-left rock",
+    "preserved": "All ancestor paintings, hands, rock outside small feathered patch, lighting, square size and framing",
+    "digits": "Five digits on each inherited Pepe hand and five on inherited white hand stencil; no new hands",
+    "writing": "No letters, numbers, captions, logos, watermarks or borders observed",
+    "limitations": [
+      "Inherited cave rock has a photographic appearance; retained to preserve the wall.",
+      "JPEG reduces fine pigment and rock detail."
+    ],
+    "unmet_added_visual_requirements": []
+  },
+  "scope": "Local checks and worker visual inspection only; no independent certification."
+}

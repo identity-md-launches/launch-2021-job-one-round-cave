@@ -1,0 +1,1 @@
+{"tasks":[{"id":"read","minutes":2},{"id":"build","minutes":5,"after":["read"]},{"id":"fixtures","minutes":3,"after":["read"]},{"id":"check","minutes":2,"after":["build","fixtures"]}]}
